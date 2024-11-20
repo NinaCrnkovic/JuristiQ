@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{layout/base}">
+<head>
+    <title>List Cases</title>
+</head>
+<div th:fragment="content" class="content-area">
+    <h1>Cases</h1>
+    <a href="/JuristiQ/litigation-cases/add" class="btn">Add Litigation Case</a>
+    <a href="/JuristiQ/non-litigation-cases/add" class="btn">Add Non-Litigation Case</a>
+    <table>
+        <thead>
+        <tr>
+            <th>Type</th>
+            <th>Details</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="case : ${cases}">
+            <td th:text="${case.getClass().getSimpleName()}"></td>
+            <td th:text="${case.toString()}"></td>
+            <td>
+                <a th:href="@{/JuristiQ/cases/delete/{id}(id=${case.id})}">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</html>

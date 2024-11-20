@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{layout/base}">
+<head>
+    <title>Edit Client</title>
+</head>
+<div th:fragment="content" class="content-area">
+    <h1>Edit Client</h1>
+    <form th:action="@{/JuristiQ/clients/edit/{id}(id=${client.id})}" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" th:value="${client.name}" required>
+        <br>
+        <label for="surname">Surname:</label>
+        <input type="text" id="surname" name="surname" th:value="${client.surname}" required>
+        <br>
+        <label for="oib">OIB:</label>
+        <input type="text" id="oib" name="oib" th:value="${client.oib}" required>
+        <br>
+        <label for="address">Address:</label>
+        <input type="text" id="address" name="address" th:value="${client.address}">
+        <br>
+        <label for="contactInfo">Contact Info:</label>
+        <input type="text" id="contactInfo" name="contactInfo" th:value="${client.contactInfo}">
+        <br>
+        <button type="submit">Save</button>
+    </form>
+</div>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{layout/base}">
+<head>
+    <title>Dodaj odvjetnički ured</title>
+</head>
+<body>
+<div th:fragment="content" class="content-area">
+    <div class="form-container">
+        <h1>Dodaj odvjetnički ured</h1>
+        <form th:action="@{/JuristiQ/lawfirms/add}" method="post">
+            <label for="name">Naziv:</label>
+            <input type="text" id="name" name="name" placeholder="Unesite naziv" required>
+
+            <label for="oib">OIB:</label>
+            <input type="text" id="oib" name="oib" placeholder="Unesite OIB" required>
+
+            <label for="address">Adresa:</label>
+            <input type="text" id="address" name="address" placeholder="Unesite adresu">
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Unesite email">
+
+            <label for="phone">Telefon:</label>
+            <input type="tel" id="phone" name="phone" placeholder="Unesite telefon">
+
+            <button type="submit" class="btn-primary">Dodaj</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>
+
+

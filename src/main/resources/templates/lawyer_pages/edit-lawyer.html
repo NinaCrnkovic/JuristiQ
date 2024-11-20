@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Uredi odvjetnika</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
+</head>
+<body>
+<div class="form-container">
+    <h1>Uredi odvjetnika</h1>
+    <form th:action="@{/JuristiQ/lawyers/edit/{id}(id=${lawyer.id})}" th:object="${lawyer}" method="post">
+        <label for="name">Ime:</label>
+        <input type="text" id="name" th:field="*{name}" required />
+
+        <label for="surname">Prezime:</label>
+        <input type="text" id="surname" th:field="*{surname}" required />
+
+        <label for="oib">OIB:</label>
+        <input type="text" id="oib" th:field="*{oib}" required />
+
+        <label for="address">Adresa:</label>
+        <input type="text" id="address" th:field="*{address}" required />
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" th:field="*{email}" required />
+
+        <label for="phone">Telefon:</label>
+        <input type="tel" id="phone" th:field="*{phone}" required />
+
+        <label for="lawFirm">Odvjetnički ured:</label>
+        <select id="lawFirm" th:field="*{lawFirm.id}">
+            <option th:each="firm : ${lawFirms}" th:value="${firm.id}" th:text="${firm.name}" th:selected="${lawyer.lawFirm?.id == firm.id}"></option>
+        </select>
+
+        <button type="submit" class="btn-primary">Spremi</button>
+    </form>
+</div>
+</body>
+</html>
+
+
+

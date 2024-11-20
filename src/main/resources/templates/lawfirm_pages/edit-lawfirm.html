@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{layout/base}">
+<head>
+    <title>Uredi odvjetnički ured</title>
+</head>
+<div th:fragment="content" class="form-container">
+    <h1>Uredi odvjetnički ured</h1>
+    <form th:action="@{/JuristiQ/lawfirms/edit/{id}(id=${lawFirm.id})}" method="post">
+        <label for="name">Naziv:</label>
+        <input type="text" id="name" name="name" th:value="${lawFirm.name}" required>
+
+        <label for="oib">OIB:</label>
+        <input type="text" id="oib" name="oib" th:value="${lawFirm.oib}" required>
+
+        <label for="address">Adresa:</label>
+        <input type="text" id="address" name="address" th:value="${lawFirm.address}">
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" th:value="${lawFirm.email}">
+
+        <label for="phone">Telefon:</label>
+        <input type="tel" id="phone" name="phone" th:value="${lawFirm.phone}">
+
+        <button type="submit" class="btn btn-primary">Spremi</button>
+    </form>
+</div>
+</html>
+
+

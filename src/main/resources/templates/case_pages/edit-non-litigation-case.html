@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{layout/base}">
+<head>
+    <title>Edit Non-Litigation Case</title>
+</head>
+<div th:fragment="content" class="content-area">
+    <h1>Edit Non-Litigation Case</h1>
+    <form th:action="@{/JuristiQ/non-litigation-cases/edit/{id}(id=${nonLitigationCase.id})}" method="post">
+        <label for="internalReferenceNumber">Internal Reference Number:</label>
+        <input type="text" id="internalReferenceNumber" name="internalReferenceNumber" th:value="${nonLitigationCase.internalReferenceNumber}" required>
+        <br>
+        <label for="caseType">Case Type:</label>
+        <select id="caseType" name="caseType" required>
+            <option th:each="type : ${T(hr.algebra.juristiq.enums.NonLitigationCaseType).values()}" th:value="${type}" th:text="${type}" th:selected="${type == nonLitigationCase.caseType}"></option>
+        </select>
+        <br>
+        <button type="submit">Save</button>
+    </form>
+</div>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>JuristiQ - Web Application</title>
+  <link rel="stylesheet" th:href="@{/css/styles.css}" />
+</head>
+<body>
+<header>
+  <nav>
+    <ul class="navbar">
+      <li><a th:href="@{/JuristiQ/home}">Početna</a></li>
+      <li class="dropdown">
+        <a href="#">Predmeti</a>
+        <ul class="dropdown-menu">
+          <li><a th:href="@{/JuristiQ/cases}">Popis parničnih predmeta</a></li>
+          <li><a th:href="@{/JuristiQ/cases}">Popis izvanparničnih predmeta</a></li>
+          <li><a th:href="@{/JuristiQ/litigation-cases/add}">Dodaj parnični predmet</a></li>
+          <li><a th:href="@{/JuristiQ/non-litigation-cases/add}">Dodaj vanparnični predmet</a></li>
+
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a href="#">Stranke</a>
+        <ul class="dropdown-menu">
+          <li><a th:href="@{/JuristiQ/clients}">Popis stranaka</a></li>
+          <li><a th:href="@{/JuristiQ/clients/add}">Dodaj stranku</a></li>
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a href="#">Odvjetnički Uredi</a>
+        <ul class="dropdown-menu">
+          <li><a th:href="@{/JuristiQ/lawfirms}">Popis odvjetničkih ureda</a></li>
+          <li><a th:href="@{/JuristiQ/lawfirms/add}">Dodaj odvjetnički ured</a></li>
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a href="#">Odvjetnici</a>
+        <ul class="dropdown-menu">
+          <li><a th:href="@{/JuristiQ/lawyers}">Popis odvjetnika</a></li>
+          <li><a th:href="@{/JuristiQ/lawyers/add}">Dodaj odvjetnika</a></li>
+        </ul>
+      </li>
+      <li><a th:href="@{/JuristiQ/about}">O Aplikaciji</a></li>
+      <li><a th:href="@{/JuristiQ/contact}">Kontakt</a></li>
+      <li><a th:href="@{/JuristiQ/login}">Prijava</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- Fragment content placeholder -->
+<div th:replace="~{::content}">
+  <!-- Placeholder for specific page content -->
+</div>
+
+<footer>
+  <p>© 2024 JuristiQ. Sva prava pridržana.</p>
+</footer>
+</body>
+</html>
+
+

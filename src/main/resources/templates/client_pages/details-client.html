@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{layout/base}">
+<head>
+    <title>Detalji o klijentu</title>
+</head>
+<div th:fragment="content" class="content-area">
+    <div class="details-container">
+        <h1 th:text="'Detalji o klijentu: ' + ${client.name} + ' ' + ${client.surname}"></h1>
+        <p><strong>Ime:</strong> <span th:text="${client.name}"></span></p>
+        <p><strong>Prezime:</strong> <span th:text="${client.surname}"></span></p>
+        <p><strong>OIB:</strong> <span th:text="${client.oib}"></span></p>
+        <p><strong>Adresa:</strong> <span th:text="${client.address}"></span></p>
+        <p><strong>Email:</strong> <span th:text="${client.email}"></span></p>
+        <p><strong>Telefon:</strong> <span th:text="${client.phoneNumber}"></span></p>
+        <p><strong>Odvjetnik:</strong> <span th:text="${client.lawyer != null ? client.lawyer.name + ' ' + client.lawyer.surname : 'Nema odvjetnika'}"></span></p>
+        <p><strong>Zastupan:</strong> <span th:text="${client.represented ? 'Da' : 'Ne'}"></span></p>
+        <a th:href="@{/JuristiQ/clients}" class="btn btn-primary">Nazad na popis</a>
+    </div>
+</div>
+</html>

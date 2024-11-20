@@ -1,0 +1,17 @@
+package hr.algebra.juristiq.enums;
+
+public enum NonLitigationCaseType {
+    UGOVORI,
+    OPORUKA,
+    KONZULTACIJE,
+    MEDIJACIJA,
+    IZJAVA,
+    SAVJETOVANJE,
+    OVJERA_DOKUMENATA,
+    OSNIVANJE_TVRKI,
+    REVIZIJA_UGOVORA,
+    IZMJENA_DOKUMENATA,
+    ZAŠTITA_INTELEKTUALNOG_VLASNIŠTVA,
+    IMOVINSKO_PRAVNI_ODNOSI,
+    DRUGO;
+}

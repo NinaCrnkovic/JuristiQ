@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{layout/base}">
+<head>
+    <title>Dodaj Klijenta</title>
+</head>
+<div th:fragment="content" class="content-area">
+    <div class="form-container">
+        <h1>Dodaj Klijenta</h1>
+        <form action="/JuristiQ/clients/add" method="post">
+            <!-- Name -->
+            <label for="name">Ime:</label>
+            <input type="text" id="name" name="name" required>
+
+            <!-- Surname -->
+            <label for="surname">Prezime:</label>
+            <input type="text" id="surname" name="surname" required>
+
+            <!-- OIB -->
+            <label for="oib">OIB:</label>
+            <input type="text" id="oib" name="oib" required>
+
+            <!-- Address -->
+            <label for="address">Adresa:</label>
+            <input type="text" id="address" name="address">
+
+            <!-- Email -->
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email">
+
+            <!-- Phone -->
+            <label for="phoneNumber">Telefon:</label>
+            <input type="tel" id="phoneNumber" name="phoneNumber">
+
+            <!-- Represented -->
+            <label for="represented">Zastupan:</label>
+            <select id="represented" name="represented" required>
+                <option value="true">Da</option>
+                <option value="false">Ne</option>
+            </select>
+
+            <!-- Lawyer -->
+            <label for="lawyer">Odvjetnik:</label>
+            <select id="lawyer" name="lawyerId">
+                <option th:each="lawyer : ${lawyers}" th:value="${lawyer.id}" th:text="${lawyer.name + ' ' + lawyer.surname}"></option>
+                <option value="">Nema odvjetnika</option>
+            </select>
+
+            <!-- Submit -->
+            <button type="submit" class="btn btn-primary">Spremi</button>
+        </form>
+    </div>
+</div>
+</html>

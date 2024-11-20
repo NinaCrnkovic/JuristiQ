@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{layout/base}">
+<head>
+    <title>Popis odvjetničkih ureda</title>
+</head>
+<div th:fragment="content">
+    <div class="table-container">
+        <h1>Popis odvjetničkih ureda</h1>
+
+        <!-- Forma za pretraživanje -->
+        <form action="/JuristiQ/lawfirms" method="get" class="search-form">
+            <input type="text" name="keyword" placeholder="Pretraži urede..." th:value="${keyword}" class="search-input">
+            <button type="submit" class="btn btn-search">Pretraži</button>
+        </form>
+
+        <a th:href="@{/JuristiQ/lawfirms/add}" class="btn btn-primary">Dodaj novi ured</a>
+        <table>
+            <thead>
+            <tr>
+                <th>Naziv</th>
+                <th>OIB</th>
+                <th>Email</th>
+                <th>Telefon</th>
+                <th>Akcije</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="lawFirm : ${lawFirms}">
+                <td th:text="${lawFirm.name}"></td>
+                <td th:text="${lawFirm.oib}"></td>
+                <td th:text="${lawFirm.email}"></td>
+                <td th:text="${lawFirm.phone}"></td>
+                <td>
+                    <a th:href="@{/JuristiQ/lawfirms/edit/{id}(id=${lawFirm.id})}" class="btn btn-edit">Uredi</a>
+                    <a th:href="@{/JuristiQ/lawfirms/delete/{id}(id=${lawFirm.id})}" class="btn btn-delete">Obriši</a>
+                    <a th:href="@{/JuristiQ/lawfirms/{id}/details(id=${lawFirm.id})}" class="btn btn-details">Detalji</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</html>
+

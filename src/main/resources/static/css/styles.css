@@ -1,0 +1,328 @@
+/* Reset styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Base styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #e0e0e0; /* Light gray */
+    color: #333;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Header */
+header {
+    background-color: #1D3B29; /* Dark green */
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+    border-bottom: 4px solid #bfa34b; /* Gold */
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+}
+
+header nav ul li {
+    position: relative;
+    margin-right: 20px;
+}
+
+header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 8px 15px;
+    display: block;
+    transition: background-color 0.3s ease;
+}
+
+header nav ul li a:hover {
+    background-color: #bfa34b;
+    border-radius: 5px;
+}
+
+/* Dropdown menu */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: #4C7A57; /* Green */
+    padding: 5px 0;
+    margin: 0;
+    list-style: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    min-width: 200px;
+}
+
+.dropdown-menu li a {
+    color: #fff;
+    padding: 8px 15px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-menu li a:hover {
+    background-color: #bfa34b;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+/* Content */
+.content-area {
+    padding: 20px;
+    background-color: #fff;
+    margin: 20px auto;
+    max-width: 800px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Buttons */
+button, .btn {
+    background-color: #4C7A57; /* Green */
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover, .btn:hover {
+    background-color: #bfa34b; /* Gold */
+}
+
+/* Table */
+.table-container {
+    margin: 20px auto;
+    width: 80%;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.table-container h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #4C7A57;
+}
+
+.table-container table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-container th, .table-container td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+
+.table-container th {
+    background: #1D3B29;
+    color: #fff;
+}
+
+/* Gumb za Uredi */
+.table-container .btn-edit {
+    background: #4C7A57; /* Zelena */
+    color: #fff;
+    padding: 5px 10px;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.table-container .btn-edit:hover {
+    background: #85bb65; /* Svjetlija zelena */
+}
+
+/* Gumb za Obriši */
+.table-container .btn-delete {
+    background: #D32F2F; /* Tamno crvena */
+    color: #fff;
+    padding: 5px 10px;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.table-container .btn-delete:hover {
+    background: #FF6B6B; /* Svjetlija crvena */
+}
+
+/* Gumb za Detalji */
+.table-container .btn-details {
+    background: #bfa34b; /* Zlatna */
+    color: #fff;
+    padding: 5px 10px;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.table-container .btn-details:hover {
+    background: #e4c281; /* Svjetlija zlatna */
+}
+
+/* Forms */
+.form-container {
+    width: 50%;
+    margin: 0 auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-container h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #4C7A57;
+}
+
+.form-container label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.form-container input, .form-container select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.form-container input[type="text"],
+.form-container input[type="email"],
+.form-container input[type="tel"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.form-container .btn-primary, .btn-primary {
+    display: inline-block; /* Ensure proper button alignment */
+    background: #4c7a57;
+    color: white;
+    font-size: 18px;
+    padding: 10px 20px;
+    margin: 20px 0; /* Adds space above and below the button */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none; /* Removes underline from the text */
+    transition: background 0.3s ease;
+}
+
+.form-container .btn-primary:hover {
+    background: #bfa34b;
+}
+
+
+
+
+.details-container {
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+}
+
+.details-container h1 {
+    text-align: center;
+    color: #4C7A57; /* Green */
+    margin-bottom: 20px;
+}
+
+.details-container p {
+    font-size: 1.2em;
+    margin: 10px 0;
+}
+
+.details-container h2 {
+    margin-top: 30px;
+    color: #1D3B29; /* Dark Green */
+}
+
+.details-container table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+.details-container th, .details-container td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ccc;
+}
+
+.details-container th {
+    background: #1D3B29; /* Dark Green */
+    color: #fff;
+}
+
+
+/* Search form */
+.search-form {
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px; /* Adds space between the input and button */
+    margin-bottom: 20px; /* Adds space below the search form */
+}
+
+.search-input {
+    width: 100%; /* Ensures the input takes up available space */
+
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.btn-search {
+    background-color: #4C7A57; /* Consistent with other buttons */
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-search:hover {
+    background-color: #bfa34b; /* Matches hover styles */
+}
+
+
+/* Footer */
+footer {
+    background-color: #1D3B29;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: 20px;
+    width: 100%;
+}

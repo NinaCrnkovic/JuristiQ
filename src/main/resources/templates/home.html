@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{layout/base}">
+<head>
+    <title>Home</title>
+</head>
+<div th:fragment="content" class="content-area">
+    <h1>Welcome to JuristiQ</h1>
+
+    <!-- Dodajemo izbor opcija -->
+    <div class="options">
+        <a href="/JuristiQ/my-cases" class="btn">My Cases</a>
+        <a href="/JuristiQ/all-cases" class="btn">All Cases</a>
+        <a href="/JuristiQ/my-clients" class="btn">My Clients</a>
+        <a href="/JuristiQ/all-clients" class="btn">All Clients</a>
+    </div>
+</div>
+</body>
+</html>
