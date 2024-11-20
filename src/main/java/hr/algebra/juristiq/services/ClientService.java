@@ -37,5 +37,13 @@ public class ClientService {
     public void deleteClient(Long id) {
         clientRepository.deleteById(id);
     }
+
+    public List<Client> getClientsByIds(List<Long> plaintiffs) {
+        return clientRepository.findAllById(plaintiffs);
+    }
+
+    public List<Client> searchClientsByName(String query) {
+        return clientRepository.findByNameContainingIgnoreCase(query);
+    }
 }
 

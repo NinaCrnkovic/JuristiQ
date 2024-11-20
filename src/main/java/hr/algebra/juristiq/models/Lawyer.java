@@ -3,10 +3,7 @@ package hr.algebra.juristiq.models;
 
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
 @NoArgsConstructor
@@ -31,6 +28,7 @@ public class Lawyer {
 
     @ManyToOne
     @JoinColumn(name = "law_firm_id")
+    @ToString.Exclude
     private LawFirm lawFirm;
 
 

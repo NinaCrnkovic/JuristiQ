@@ -1,11 +1,9 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{layout/base}">
 <head>
     <title>Uredi odvjetnika</title>
-    <link rel="stylesheet" th:href="@{/css/styles.css}" />
 </head>
-<body>
-<div class="form-container">
+<div th:fragment="content" class="form-container">
     <h1>Uredi odvjetnika</h1>
     <form th:action="@{/JuristiQ/lawyers/edit/{id}(id=${lawyer.id})}" th:object="${lawyer}" method="post">
         <label for="name">Ime:</label>

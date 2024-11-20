@@ -1,40 +1,64 @@
 package hr.algebra.juristiq.enums;
 
 public enum Court {
-    OPĆINSKI_SUD_U_ZAGREBU,
-    OPĆINSKI_SUD_U_SPLITU,
-    OPĆINSKI_SUD_U_RIJECI,
-    OPĆINSKI_SUD_U_OSIJEKU,
-    OPĆINSKI_SUD_U_ZADRU,
-    OPĆINSKI_SUD_U_PULI,
-    OPĆINSKI_SUD_U_VARAŽDINU,
-    OPĆINSKI_SUD_U_KARLOVCU,
-    OPĆINSKI_SUD_U_DUBROVNIKU,
-    OPĆINSKI_SUD_U_BJELOVARU,
-    OPĆINSKI_SUD_U_POŽEGI,
-    OPĆINSKI_SUD_U_VUKOVARU,
-    ŽUPANIJSKI_SUD_U_ZAGREBU,
-    ŽUPANIJSKI_SUD_U_SPLITU,
-    ŽUPANIJSKI_SUD_U_RIJEKI,
-    ŽUPANIJSKI_SUD_U_OSIJEKU,
-    ŽUPANIJSKI_SUD_U_ZADRU,
-    ŽUPANIJSKI_SUD_U_PULI,
-    ŽUPANIJSKI_SUD_U_VARAŽDINU,
-    ŽUPANIJSKI_SUD_U_KARLOVCU,
-    ŽUPANIJSKI_SUD_U_DUBROVNIKU,
-    TRGOVAČKI_SUD_U_ZAGREBU,
-    TRGOVAČKI_SUD_U_SPLITU,
-    TRGOVAČKI_SUD_U_RIJEKI,
-    TRGOVAČKI_SUD_U_OSIJEKU,
-    TRGOVAČKI_SUD_U_VARAŽDINU,
-    TRGOVAČKI_SUD_U_BJELOVARU,
-    VISOKI_TRGOVAČKI_SUD,
-    VISOKI_PREKRŠAJNI_SUD,
-    USTAVNI_SUD,
-    VRHOVNI_SUD,
-    UPRAVNI_SUD_U_ZAGREBU,
-    UPRAVNI_SUD_U_SPLITU,
-    UPRAVNI_SUD_U_RIJEKI,
-    UPRAVNI_SUD_U_OSIJEKU,
-    VISOKI_UPRAVNI_SUD;
+    OPĆINSKI_SUD_U_ZAGREBU("Općinski sud u Zagrebu"),
+    OPĆINSKI_SUD_U_SPLITU("Općinski sud u Splitu"),
+    OPĆINSKI_SUD_U_RIJECI("Općinski sud u Rijeci"),
+    OPĆINSKI_SUD_U_OSIJEKU("Općinski sud u Osijeku"),
+    OPĆINSKI_SUD_U_ZADRU("Općinski sud u Zadru"),
+    OPĆINSKI_SUD_U_PULI("Općinski sud u Puli"),
+    OPĆINSKI_SUD_U_VARAŽDINU("Općinski sud u Varaždinu"),
+    OPĆINSKI_SUD_U_KARLOVCU("Općinski sud u Karlovcu"),
+    OPĆINSKI_SUD_U_DUBROVNIKU("Općinski sud u Dubrovniku"),
+    OPĆINSKI_SUD_U_BJELOVARU("Općinski sud u Bjelovaru"),
+    OPĆINSKI_SUD_U_POŽEGI("Općinski sud u Požegi"),
+    OPĆINSKI_SUD_U_VUKOVARU("Općinski sud u Vukovaru"),
+    ŽUPANIJSKI_SUD_U_ZAGREBU("Županijski sud u Zagrebu"),
+    ŽUPANIJSKI_SUD_U_SPLITU("Županijski sud u Splitu"),
+    ŽUPANIJSKI_SUD_U_RIJEKI("Županijski sud u Rijeci"),
+    ŽUPANIJSKI_SUD_U_OSIJEKU("Županijski sud u Osijeku"),
+    ŽUPANIJSKI_SUD_U_ZADRU("Županijski sud u Zadru"),
+    ŽUPANIJSKI_SUD_U_PULI("Županijski sud u Puli"),
+    ŽUPANIJSKI_SUD_U_VARAŽDINU("Županijski sud u Varaždinu"),
+    ŽUPANIJSKI_SUD_U_KARLOVCU("Županijski sud u Karlovcu"),
+    ŽUPANIJSKI_SUD_U_DUBROVNIKU("Županijski sud u Dubrovniku"),
+    TRGOVAČKI_SUD_U_ZAGREBU("Trgovački sud u Zagrebu"),
+    TRGOVAČKI_SUD_U_SPLITU("Trgovački sud u Splitu"),
+    TRGOVAČKI_SUD_U_RIJEKI("Trgovački sud u Rijeci"),
+    TRGOVAČKI_SUD_U_OSIJEKU("Trgovački sud u Osijeku"),
+    TRGOVAČKI_SUD_U_VARAŽDINU("Trgovački sud u Varaždinu"),
+    TRGOVAČKI_SUD_U_BJELOVARU("Trgovački sud u Bjelovaru"),
+    VISOKI_TRGOVAČKI_SUD("Visoki trgovački sud"),
+    VISOKI_PREKRŠAJNI_SUD("Visoki prekršajni sud"),
+    USTAVNI_SUD("Ustavni sud"),
+    VRHOVNI_SUD("Vrhovni sud"),
+    UPRAVNI_SUD_U_ZAGREBU("Upravni sud u Zagrebu"),
+    UPRAVNI_SUD_U_SPLITU("Upravni sud u Splitu"),
+    UPRAVNI_SUD_U_RIJEKI("Upravni sud u Rijeci"),
+    UPRAVNI_SUD_U_OSIJEKU("Upravni sud u Osijeku"),
+    VISOKI_UPRAVNI_SUD("Visoki upravni sud");
+
+    private final String displayName;
+
+    Court(String displayName) {
+        this.displayName = displayName;
+    }
+
+    public String getDisplayName() {
+        return displayName;
+    }
+
+    @Override
+    public String toString() {
+        return displayName;
+    }
+
+    public static Court fromString(String displayName) {
+        for (Court court : Court.values()) {
+            if (court.displayName.equals(displayName)) {
+                return court;
+            }
+        }
+        throw new IllegalArgumentException("No enum constant with display name " + displayName);
+    }
 }

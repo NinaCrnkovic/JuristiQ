@@ -1,10 +1,7 @@
 package hr.algebra.juristiq.models;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +31,7 @@ public class LawFirm {
     private String phone;
 
     @OneToMany(mappedBy = "lawFirm", cascade = CascadeType.ALL, orphanRemoval = true)
+    @ToString.Exclude
     private List<Lawyer> lawyers = new ArrayList<>();
 
 

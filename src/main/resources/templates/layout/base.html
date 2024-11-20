@@ -12,10 +12,12 @@
       <li class="dropdown">
         <a href="#">Predmeti</a>
         <ul class="dropdown-menu">
-          <li><a th:href="@{/JuristiQ/cases}">Popis parničnih predmeta</a></li>
-          <li><a th:href="@{/JuristiQ/cases}">Popis izvanparničnih predmeta</a></li>
-          <li><a th:href="@{/JuristiQ/litigation-cases/add}">Dodaj parnični predmet</a></li>
-          <li><a th:href="@{/JuristiQ/non-litigation-cases/add}">Dodaj vanparnični predmet</a></li>
+          <li><a th:href="@{/JuristiQ/litigation-cases}">Popis sudskih predmeta</a></li>
+          <li><a th:href="@{/non-litigation-cases}">Popis izvansudskih predmeta</a></li>
+
+          <li><a th:href="@{/JuristiQ/litigation-cases/add}">Dodaj sudski predmet</a></li>
+          <li><a th:href="@{/non-litigation-cases/add}">Dodaj izvansudski predmet</a></li>
+
 
         </ul>
       </li>

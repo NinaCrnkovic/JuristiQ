@@ -1,5 +1,6 @@
 package hr.algebra.juristiq.models;
 
+import hr.algebra.juristiq.enums.ActionType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,6 +8,8 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
+
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
@@ -16,15 +19,22 @@ public class Action {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
+    @Enumerated(EnumType.STRING)
+    private ActionType type; // Enum defining the type of action.
 
-    private String type;
+    private double amount; // Cost or value associated with the action.
 
-    private double amount;
+    private LocalDate date; // Date of the action.
 
-    private LocalDate date;
+    private LocalTime time; // Optional time of the action.
 
+    private Integer deadlineDays; // Optional deadline in days.
 
+    private String description; // Optional additional details.
+
+    @ManyToOne
+    @JoinColumn(name = "litigation_case_id")
+    private LitigationCase litigationCase;
 }
 
 

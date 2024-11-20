@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{layout/base}">
+<head>
+    <title>Dodaj dokument</title>
+</head>
+<body>
+<div th:fragment="content" class="add-documents-container">
+    <h1 class="title">Dodaj dokument</h1>
+    <form th:action="@{/JuristiQ/documents/add}" method="post" enctype="multipart/form-data" class="form">
+        <input type="hidden" name="caseId" th:value="${caseId}">
+
+        <div class="form-group">
+            <label for="file" class="form-label">Odaberite dokument:</label>
+            <input type="file" id="file" name="file" accept=".pdf" class="form-input" required>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn-primary">Spremi</button>
+            <a th:href="@{/litigation-cases/details/{id}(id=${caseId})}" class="btn-primary">Natrag</a>
+        </div>
+    </form>
+</div>
+</body>
+</html>
+

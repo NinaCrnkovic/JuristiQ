@@ -7,5 +7,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ActionRepository extends JpaRepository<Action, Long> {
     // Primjeri custom upita
-    Action findByName(String name);
+    Action findByType(String type);
+
 }

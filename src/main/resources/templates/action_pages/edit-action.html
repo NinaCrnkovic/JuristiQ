@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" layout:decorate="~{layout/base}">
+<head>
+    <title>Uredi radnju</title>
+</head>
+<body>
+<div th:fragment="content" class="form-container">
+    <h1>Uredi radnju</h1>
+    <form th:action="@{/JuristiQ/actions/edit}" th:object="${action}" method="post">
+        <input type="hidden" th:field="*{id}" />
+        <input type="hidden" th:field="*{litigationCase.id}" />
+
+        <label for="type">Vrsta Radnje:</label>
+        <select id="type" th:field="*{type}">
+            <option th:each="type : ${T(hr.algebra.juristiq.enums.ActionType).values()}"
+                    th:value="${type}" th:text="${type}"></option>
+        </select>
+
+        <label for="amount">Iznos:</label>
+        <input type="number" id="amount" th:field="*{amount}" required />
+
+        <label for="date">Datum:</label>
+        <input type="date" id="date" th:field="*{date}" required />
+
+        <label for="time">Vrijeme:</label>
+        <input type="time" id="time" th:field="*{time}" />
+
+        <label for="deadlineDays">Rok (dani):</label>
+        <input type="number" id="deadlineDays" th:field="*{deadlineDays}" />
+
+        <label for="description">Opis:</label>
+        <textarea id="description" th:field="*{description}"></textarea>
+
+        <button type="submit" class="btn btn-primary">Spremi</button>
+    </form>
+
+</div>
+</body>
+</html>

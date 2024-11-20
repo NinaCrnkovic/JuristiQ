@@ -1,46 +1,44 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" layout:decorate="~{layout/base}">
 <head>
-    <title>Dodaj Parnični Predmet</title>
+    <title>Dodaj sudski predmet</title>
 </head>
+<body>
 <div th:fragment="content" class="content-area">
     <div class="form-container">
-        <h1>Dodaj Parnični Predmet</h1>
+        <h1>Dodaj sudski predmet</h1>
         <form th:action="@{/JuristiQ/litigation-cases/add}" method="post">
-
-            <!-- Broj predmeta -->
             <label for="designation">Broj predmeta:</label>
-            <input type="text" id="designation" name="designation" placeholder="Broj predmeta ili ostavite prazno">
+            <input type="text" id="designation" name="designation" required>
 
-            <!-- Sud -->
             <label for="court">Sud:</label>
-            <select id="court" name="court" required>
-                <option th:each="court : ${courts}" th:value="${court}" th:text="${court}"></option>
+            <select id="court" name="court">
+                <option th:each="court : ${courts}" th:value="${court}" th:text="${court.displayName}"></option>
             </select>
 
-            <!-- Sudac -->
             <label for="judge">Sudac:</label>
-            <input type="text" id="judge" name="judge" placeholder="Ime suca (opcionalno)">
+            <input type="text" id="judge" name="judge">
 
-            <!-- Vrijednost spora -->
-            <label for="valueInDispute">Vrijednost spora:</label>
-            <input type="number" id="valueInDispute" name="valueInDispute" placeholder="Unesite vrijednost">
+            <label for="vps">Vrijednost spora:</label>
+            <input type="number" id="vps" name="vps">
 
-            <!-- Zastupane strane -->
-            <label for="plaintiffs">Zastupane strane:</label>
-            <select id="plaintiffs" name="plaintiffs" multiple required>
+            <label for="representedParties">Zastupane strane:</label>
+            <select id="representedParties" name="representedParties" multiple>
                 <option th:each="client : ${clients}" th:value="${client.id}" th:text="${client.name + ' ' + client.surname}"></option>
             </select>
 
-            <!-- Suprotne strane -->
-            <label for="defendants">Suprotne strane:</label>
-            <select id="defendants" name="defendants" multiple>
+            <label for="opposingParties">Suprotne strane:</label>
+            <select id="opposingParties" name="opposingParties" multiple>
                 <option th:each="client : ${clients}" th:value="${client.id}" th:text="${client.name + ' ' + client.surname}"></option>
             </select>
 
-            <!-- Spremi -->
             <button type="submit" class="btn btn-primary">Spremi</button>
         </form>
     </div>
 </div>
+</body>
 </html>
+
+
+
+

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" layout:decorate="~{layout/base}">
+<head>
+    <title>Popis Parničnih Predmeta</title>
+</head>
+<div th:fragment="content" class="table-container">
+    <h1>Popis Parničnih Predmeta</h1>
+
+    <!-- Search Form -->
+    <form th:action="@{/JuristiQ/litigation-cases}" method="get" class="search-form">
+        <input type="text" name="search" placeholder="Pretraži parnične predmete..." th:value="${search}" class="search-input">
+        <button type="submit" class="btn btn-search">Pretraži</button>
+    </form>
+
+    <!-- Add Button -->
+    <a th:href="@{/JuristiQ/litigation-cases/add}" class="btn btn-primary">Dodaj novi predmet</a>
+
+    <!-- Table -->
+    <table>
+        <thead>
+        <tr>
+            <th>Broj predmeta</th>
+            <th>Sud</th>
+            <th>Sudac</th>
+            <th>Vrijednost spora</th>
+            <th>Zastupane strane</th>
+            <th>Suprotne strane</th>
+            <th>Akcije</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="case : ${litigationCases}">
+            <td th:text="${case.designation}"></td>
+            <td th:text="${case.court}"></td>
+            <td th:text="${case.judge ?: 'N/A'}"></td>
+            <td th:text="${case.vps ?: 'N/A'}"></td>
+            <td>
+                <span th:each="party : ${case.representedParties}" th:text="${party.name + ' ' + party.surname + ', '}"></span>
+            </td>
+            <td>
+                <span th:each="party : ${case.opposingParties}" th:text="${party.name + ' ' + party.surname + ', '}"></span>
+            </td>
+            <td>
+                <a th:href="@{/JuristiQ/litigation-cases/edit/{id}(id=${case.id})}" class="btn btn-edit">Uredi</a>
+                <a th:href="@{/JuristiQ/litigation-cases/delete/{id}(id=${case.id})}" class="btn btn-delete">Obriši</a>
+                <a th:href="@{/JuristiQ/litigation-cases/{id}/details(id=${case.id})}" class="btn btn-details">Detalji</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</html>
+
+
+
