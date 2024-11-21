@@ -2,6 +2,12 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <title>JuristiQ - Web Application</title>
+  <!-- FullCalendar CSS -->
+  <link rel="stylesheet" href="https://cdn.daypilot.org/monthly.css">
+  <script src="https://cdn.daypilot.org/daypilot-all.min.js"></script>
+
+
+
   <link rel="stylesheet" th:href="@{/css/styles.css}" />
 </head>
 <body>
@@ -13,10 +19,10 @@
         <a href="#">Predmeti</a>
         <ul class="dropdown-menu">
           <li><a th:href="@{/JuristiQ/litigation-cases}">Popis sudskih predmeta</a></li>
-          <li><a th:href="@{/non-litigation-cases}">Popis izvansudskih predmeta</a></li>
+          <li><a th:href="@{/JuristiQ/non-litigation-cases}">Popis izvansudskih predmeta</a></li>
 
           <li><a th:href="@{/JuristiQ/litigation-cases/add}">Dodaj sudski predmet</a></li>
-          <li><a th:href="@{/non-litigation-cases/add}">Dodaj izvansudski predmet</a></li>
+          <li><a th:href="@{/JuristiQ/non-litigation-cases/add}">Dodaj izvansudski predmet</a></li>
 
 
         </ul>
@@ -50,7 +56,7 @@
         </ul>
       </li>
 
-      <li><a th:href="@{/JuristiQ/contact}">Kontakt</a></li>
+      <li><a th:href="@{/JuristiQ/calendar}">Kalendar</a></li>
       <li><a th:href="@{/JuristiQ/login}">Prijava</a></li>
     </ul>
   </nav>

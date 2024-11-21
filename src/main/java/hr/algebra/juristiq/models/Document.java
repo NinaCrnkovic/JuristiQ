@@ -31,6 +31,9 @@ public class Document {
     @JoinColumn(name = "litigation_case_id", nullable = false)
     private LitigationCase litigationCase;
 
+    @ManyToOne
+    @JoinColumn(name = "non_litigation_case_id", nullable = true)
+    private NonLitigationCase nonLitigationCase;
 
 }
 

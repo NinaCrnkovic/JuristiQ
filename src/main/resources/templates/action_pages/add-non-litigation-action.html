@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{layout/base}">
 <head>
-    <title>Dodaj sudsku radnju</title>
+    <title>Dodaj izvansudsku radnju</title>
 </head>
 <div th:fragment="content">
     <div class="form-container">
-        <h1>Dodaj sudsku radnju</h1>
-        <form th:action="@{/JuristiQ/actions/add}" method="post">
+        <h1>Dodaj izvansudsku radnju</h1>
+        <form th:action="@{/JuristiQ/non-litigation-actions/add}" method="post">
             <input type="hidden" th:name="caseId" th:value="${caseId}" />
+
             <label for="type">Vrsta radnje:</label>
             <select id="type" name="type" required>
-                <option th:each="type : ${T(hr.algebra.juristiq.enums.ActionType).values()}"
+                <option th:each="type : ${T(hr.algebra.juristiq.enums.NonLitigationActionType).values()}"
                         th:value="${type}" th:text="${type.displayName}"></option>
             </select>
 
@@ -31,4 +32,3 @@
     </div>
 </div>
 </html>
-

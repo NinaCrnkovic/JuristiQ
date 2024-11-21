@@ -1,0 +1,3 @@
+2024-11-21 17:39:44.357351+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "TARIFF_RULE" not found (this database is empty); SQL statement:
+select count(*) from tariff_rule tr1_0 [42104-224]

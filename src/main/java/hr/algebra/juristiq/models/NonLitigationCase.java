@@ -1,6 +1,7 @@
 package hr.algebra.juristiq.models;
 
 import hr.algebra.juristiq.enums.NonLitigationCaseType;
+import hr.algebra.juristiq.enums.NonLitigationActionType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,6 +15,8 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode
+@Table(name = "NON_LITIGATION_CASE")
 public class NonLitigationCase {
 
     @Id
@@ -21,8 +24,11 @@ public class NonLitigationCase {
     private Long id;
 
     private String internalReferenceNumber;
+
     private Double vps;
 
+    @Enumerated(EnumType.STRING)
+    private NonLitigationCaseType caseType; // Enum za tip predmeta
 
     @ManyToMany
     @JoinTable(
@@ -40,12 +46,15 @@ public class NonLitigationCase {
     )
     private List<Client> opposingParties = new ArrayList<>();
 
-
-
     @Enumerated(EnumType.STRING)
-    private NonLitigationCaseType caseType; // Enum za tipove (npr. savjetovanje, ugovor)
+    private NonLitigationActionType actionType; // Enum za akcije vezane za izvansudske predmete
 
-    @OneToMany(mappedBy = "litigationCase", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "nonLitigationCase", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<NonLitigationAction> actions;
+
+    @OneToMany(mappedBy = "nonLitigationCase", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Document> documents = new ArrayList<>();
+
 }
+
 

@@ -7,6 +7,7 @@ import hr.algebra.juristiq.repositories.LitigationCaseRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -45,5 +46,8 @@ public class ActionService {
     }
 
 
+    public List<Action> getAllActions() {
+        return actionRepository.findAll();
+    }
 }
 

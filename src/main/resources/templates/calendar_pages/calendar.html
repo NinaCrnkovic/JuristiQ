@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" layout:decorate="~{layout/base}">
+<head>
+    <title>Kalendar</title>
+</head>
+<body>
+<div th:fragment="content" >
+
+
+<div id="dp"></div>
+</div>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var dp = new DayPilot.Month("dp");
+        dp.startDate = DayPilot.Date.today();
+        dp.eventClickHandling = "Enabled";
+        dp.onEventClick = function(args) {
+            alert("Event clicked: " + args.e.data.text);
+        };
+
+        // API poziv za dohvaćanje događaja
+        DayPilot.Http.ajax({
+            url: "/api/calendar/events",
+            success: function(ajax) {
+                dp.events.list = ajax.data;
+                dp.update();
+            }
+        });
+
+        dp.init();
+    });
+</script>
+
+</body>
+</html>
+

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" layout:decorate="~{layout/base}">
+<head>
+  <title>Detalji izvansudskog predmeta</title>
+</head>
+<body>
+<div th:fragment="content" class="table-container">
+  <h1>Detalji izvansudskog predmeta</h1>
+  <div class="case-details">
+    <p><strong>Interni broj:</strong> <span th:text="${nonLitigationCase.internalReferenceNumber}"></span></p>
+    <p><strong>Vrsta predmeta:</strong> <span th:text="${nonLitigationCase.caseType.displayName}"></span></p>
+    <p><strong>Vrijednost predmeta:</strong> <span th:text="${#numbers.formatDecimal(nonLitigationCase.vps, 2, 2) + ' EUR'}"></span></p>
+
+  </div>
+
+  <div class="party-section">
+    <p><strong>Zastupane strane:</strong></p>
+    <ul class="custom-list">
+      <li th:each="party : ${nonLitigationCase.representedParties}">
+        <span th:text="${party.name + ' ' + party.surname + ' (OIB: ' + party.oib + ')'}"></span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="party-section">
+    <p><strong>Suprotne strane:</strong></p>
+    <ul class="custom-list">
+      <li th:each="party : ${nonLitigationCase.opposingParties}">
+        <span th:text="${party.name + ' ' + party.surname + ' (OIB: ' + party.oib + ')'}"></span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="buttons-container">
+    <a th:href="@{/JuristiQ/non-litigation-actions/add(caseId=${nonLitigationCase.id})}" class="btn btn-primary">Dodaj radnju</a>
+    <a th:href="@{/JuristiQ/documents/add(caseId=${nonLitigationCase.id})}" class="btn btn-primary">Dodaj dokument</a>
+  </div>
+
+  <div th:if="${nonLitigationCase.actions != null && !nonLitigationCase.actions.isEmpty()}" class="actions-section">
+    <h2>Popis radnji</h2>
+    <table>
+      <thead>
+      <tr>
+        <th>Vrsta radnje</th>
+        <th>Iznos</th>
+        <th>Datum</th>
+        <th>Opis</th>
+        <th>Akcije</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="action : ${nonLitigationCase.actions}">
+        <td th:text="${action.type.displayName}"></td>
+        <td th:text="${#numbers.formatDecimal(action.amount, 2, 2) + ' EUR'}"></td>
+
+        <td th:text="${action.date}"></td>
+        <td th:text="${action.description != null ? action.description : 'N/A'}"></td>
+        <td>
+          <a th:href="@{/JuristiQ/non-litigation-actions/edit/{id}(id=${action.id})}" class="btn-edit">Uredi</a>
+          <a th:href="@{/JuristiQ/non-litigation-actions/delete/{id}(id=${action.id})}"
+             class="btn-delete"
+             onclick="return confirm('Jeste li sigurni da želite obrisati ovu radnju?');">Obriši</a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="documents-section">
+    <h2>Popis dokumenata</h2>
+    <ul class="custom-list">
+      <li th:each="document : ${nonLitigationCase.documents}">
+        <a th:href="@{/JuristiQ/documents/{id}/download(id=${document.id})}" th:text="${document.fileName}" target="_blank"></a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="buttons-container">
+    <a th:href="@{/JuristiQ/non-litigation-cases}" class="btn btn-primary">Nazad na popis</a>
+  </div>
+</div>
+</body>
+</html>

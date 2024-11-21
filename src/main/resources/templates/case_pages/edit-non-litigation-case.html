@@ -1,20 +1,49 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{layout/base}">
+<html xmlns:th="http://www.thymeleaf.org" layout:decorate="~{layout/base}">
 <head>
-    <title>Edit Non-Litigation Case</title>
+    <title>Uredi izvansudski predmet</title>
 </head>
-<div th:fragment="content" class="content-area">
-    <h1>Edit Non-Litigation Case</h1>
+<div th:fragment="content" class="form-container">
+    <h1>Uredi izvansudski predmet</h1>
     <form th:action="@{/JuristiQ/non-litigation-cases/edit/{id}(id=${nonLitigationCase.id})}" method="post">
-        <label for="internalReferenceNumber">Internal Reference Number:</label>
+        <!-- Interni Broj -->
+        <label for="internalReferenceNumber">Interni broj:</label>
         <input type="text" id="internalReferenceNumber" name="internalReferenceNumber" th:value="${nonLitigationCase.internalReferenceNumber}" required>
-        <br>
-        <label for="caseType">Case Type:</label>
+
+        <!-- Vrijednost Spora -->
+        <label for="vps">Vrijednost predmeta (EUR):</label>
+        <input type="number" id="vps" name="vps" th:value="${nonLitigationCase.vps}" step="0.01" required>
+
+        <!-- Vrsta Predmeta -->
+        <label for="caseType">Vrsta predmeta:</label>
         <select id="caseType" name="caseType" required>
-            <option th:each="type : ${T(hr.algebra.juristiq.enums.NonLitigationCaseType).values()}" th:value="${type}" th:text="${type}" th:selected="${type == nonLitigationCase.caseType}"></option>
+            <option th:each="type : ${T(hr.algebra.juristiq.enums.NonLitigationCaseType).values()}"
+                    th:value="${type}"
+                    th:text="${type.displayName}"
+                    th:selected="${type.name() == nonLitigationCase.caseType.name()}"></option>
         </select>
-        <br>
-        <button type="submit">Save</button>
+
+        <!-- Zastupane Strane -->
+        <label for="representedParties">Zastupane strane:</label>
+        <select id="representedParties" name="representedParties" multiple>
+            <option th:each="party : ${clients}" th:value="${party.id}"
+                    th:text="${party.name + ' ' + party.surname }"
+                    th:selected="${nonLitigationCase.representedParties.contains(party)}"></option>
+        </select>
+
+        <!-- Suprotne Strane -->
+        <label for="opposingParties">Suprotne strane:</label>
+        <select id="opposingParties" name="opposingParties" multiple>
+            <option th:each="party : ${clients}" th:value="${party.id}"
+                    th:text="${party.name + ' ' + party.surname }"
+                    th:selected="${nonLitigationCase.opposingParties.contains(party)}"></option>
+        </select>
+
+        <!-- Spremi -->
+        <button type="submit" class="btn-primary">Spremi</button>
+        <a th:href="@{/JuristiQ/non-litigation-cases}" class="btn-primary">Nazad na popis</a>
     </form>
 </div>
 </html>
+
+
