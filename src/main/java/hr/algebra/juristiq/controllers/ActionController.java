@@ -1,10 +1,12 @@
 package hr.algebra.juristiq.controllers;
 
 import hr.algebra.juristiq.enums.ActionType;
+import hr.algebra.juristiq.enums.LitigationCaseType;
 import hr.algebra.juristiq.models.Action;
 
 import hr.algebra.juristiq.models.LitigationCase;
 import hr.algebra.juristiq.services.ActionService;
+import hr.algebra.juristiq.services.CostCalculationService;
 import hr.algebra.juristiq.services.LitigationCaseService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -19,21 +21,41 @@ public class ActionController {
 
     private final ActionService actionService;
     private final LitigationCaseService litigationCaseService;
+    private final CostCalculationService costCalculationService;
 
 
 
     @PostMapping("/add")
     public String addAction(@ModelAttribute Action action, @RequestParam Long caseId) {
         System.out.println("Adding action to case with ID: " + caseId);
+
+        // Dohvati predmet (LitigationCase) za koji se radnja dodaje
+        LitigationCase litigationCase = litigationCaseService.getLitigationCaseById(caseId)
+                .orElseThrow(() -> new RuntimeException("Litigation case not found"));
+
+        // Izračunaj trošak radnje
+        double calculatedCost = 0.0;
+        if (litigationCase.getCaseType() != null) {
+            calculatedCost = costCalculationService.calculateLitigationCost(
+                    action.getType(),
+                    litigationCase.getCaseType(),
+                    litigationCase.getVps()
+            );
+        }
+        action.setAmount(calculatedCost);
+
+        // Dodaj radnju na predmet
         actionService.addActionToCase(caseId, action);
         return "redirect:/JuristiQ/litigation-cases/details/" + caseId;
     }
+
 
 
     @GetMapping("/add")
     public String showAddActionForm(@RequestParam Long caseId, Model model) {
         model.addAttribute("caseId", caseId);
         model.addAttribute("action", new Action());
+        model.addAttribute("action", ActionType.values());
         return "action_pages/add-action";
     }
 
@@ -49,8 +71,9 @@ public class ActionController {
     public String showEditActionForm(@PathVariable Long id, Model model) {
         Action action = actionService.getActionById(id)
                 .orElseThrow(() -> new RuntimeException("Action not found"));
-        model.addAttribute("action", action);
-        return "action_pages/edit-action"; // Match with your edit-action.html template
+        model.addAttribute("action", action); // Proslijedi cijeli objekt 'Action'
+        model.addAttribute("actionTypes", ActionType.values()); // Dodaj dostupne tipove akcija
+        return "action_pages/edit-action";
     }
 
     @PostMapping("/edit")

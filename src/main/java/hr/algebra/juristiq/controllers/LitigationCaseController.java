@@ -1,6 +1,7 @@
 package hr.algebra.juristiq.controllers;
 
 import hr.algebra.juristiq.enums.Court;
+import hr.algebra.juristiq.enums.LitigationCaseType;
 import hr.algebra.juristiq.models.Client;
 import hr.algebra.juristiq.models.LitigationCase;
 import hr.algebra.juristiq.services.ClientService;
@@ -37,6 +38,7 @@ public class LitigationCaseController {
         model.addAttribute("litigationCase", new LitigationCase());
         model.addAttribute("clients", clientService.getAllClients());
         model.addAttribute("courts", Court.values());
+        model.addAttribute("caseTypes", LitigationCaseType.values());
         return "case_pages/add-litigation-case";
     }
 
@@ -71,6 +73,7 @@ public class LitigationCaseController {
         model.addAttribute("litigationCase", litigationCase);
         model.addAttribute("clients", clientService.getAllClients());
         model.addAttribute("courts", Court.values());
+        model.addAttribute("caseTypes", LitigationCaseType.values());
         return "case_pages/edit-litigation-case";
     }
 

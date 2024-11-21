@@ -11,9 +11,9 @@
         <input type="hidden" th:field="*{litigationCase.id}" />
 
         <label for="type">Vrsta Radnje:</label>
-        <select id="type" th:field="*{type}">
+        <select id="type" name="type" required>
             <option th:each="type : ${T(hr.algebra.juristiq.enums.ActionType).values()}"
-                    th:value="${type}" th:text="${type}"></option>
+                    th:value="${type}" th:text="${type.displayName}"></option>
         </select>
 
         <label for="amount">Iznos:</label>
@@ -31,7 +31,7 @@
         <label for="description">Opis:</label>
         <textarea id="description" th:field="*{description}"></textarea>
 
-        <button type="submit" class="btn btn-primary">Spremi</button>
+        <button type="submit" class="btn-primary">Spremi</button>
     </form>
 
 </div>

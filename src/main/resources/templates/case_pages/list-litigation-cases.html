@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" layout:decorate="~{layout/base}">
 <head>
-    <title>Popis Parničnih Predmeta</title>
+    <title>Popis sudskih predmeta</title>
 </head>
 <div th:fragment="content" class="table-container">
     <h1>Popis Parničnih Predmeta</h1>
@@ -13,7 +13,7 @@
     </form>
 
     <!-- Add Button -->
-    <a th:href="@{/JuristiQ/litigation-cases/add}" class="btn btn-primary">Dodaj novi predmet</a>
+    <a th:href="@{/JuristiQ/litigation-cases/add}" class="btn-primary">Dodaj novi predmet</a>
 
     <!-- Table -->
     <table>
@@ -21,6 +21,7 @@
         <tr>
             <th>Broj predmeta</th>
             <th>Sud</th>
+            <th>Tip predmeta</th>
             <th>Sudac</th>
             <th>Vrijednost spora</th>
             <th>Zastupane strane</th>
@@ -32,6 +33,7 @@
         <tr th:each="case : ${litigationCases}">
             <td th:text="${case.designation}"></td>
             <td th:text="${case.court}"></td>
+            <td th:text="${case.caseType}"></td>
             <td th:text="${case.judge ?: 'N/A'}"></td>
             <td th:text="${case.vps ?: 'N/A'}"></td>
             <td>

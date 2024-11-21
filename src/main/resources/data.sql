@@ -41,14 +41,14 @@ INSERT INTO CLIENT (name, surname, oib, address, email, phone_number, represente
                                                                                                   ('Nikolina', 'Grgić', '90123456789', 'Zagrebačka avenija 50, Zagreb', 'nikolina.grgic@example.com', '0999999999', TRUE, 1),
                                                                                                   ('Filip', 'Vuković', '01234567890', 'Istarska ulica 21, Pula', 'filip.vukovic@example.com', '0921231231', TRUE, 2);
 
-
+/*
 INSERT INTO LITIGATION_CASE (id, designation, court, judge, vps) VALUES
                                                                      (1, 'P-22/2018', 'OPĆINSKI_SUD_U_OSIJEKU', 'Ana Sudac', 200.0),
                                                                      (2, 'P-33/2020', 'ŽUPANIJSKI_SUD_U_SPLITU', 'Marko Pravdić', 1500.0),
                                                                      (3, 'P-44/2021', 'TRGOVAČKI_SUD_U_ZAGREBU', 'Lucija Petković', 750.0),
                                                                      (4, 'P-55/2022', 'TRGOVAČKI_SUD_U_ZAGREBU', 'Davor Perić', 300.0),
                                                                      (5, 'P-66/2023', 'OPĆINSKI_SUD_U_DUBROVNIKU', 'Ivana Kovačić', 500.0);
-/*
+
 -- Associate Plaintiffs (Represented Parties)
 INSERT INTO litigation_represented (case_id, client_id) VALUES
                                                             (1, 1), -- Case 1: Ivan Horvat

@@ -18,9 +18,7 @@ public class ActionService {
 
     private final LitigationCaseService litigationCaseService;
 
-    public List<Action> getAllActions() {
-        return actionRepository.findAll();
-    }
+
 
     public Optional<Action> getActionById(Long id) {
         return actionRepository.findById(id);
@@ -36,16 +34,14 @@ public class ActionService {
         actionRepository.deleteById(id);
     }
 
-    public Action getActionByType(String type) {
-        return actionRepository.findByType(type);
-    }
+
 
     public void addActionToCase(Long caseId, Action action) {
         LitigationCase litigationCase = litigationCaseService.getLitigationCaseById(caseId)
-                .orElseThrow(() -> new RuntimeException("Case not found"));
-        action.setLitigationCase(litigationCase); // Set the reference
-        litigationCase.getActions().add(action); // Add the action to the case
-        litigationCaseService.saveLitigationCase(litigationCase); // Save the case
+                .orElseThrow(() -> new RuntimeException("Litigation case not found"));
+
+        action.setLitigationCase(litigationCase);
+        actionRepository.save(action);
     }
 
 

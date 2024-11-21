@@ -239,7 +239,7 @@ textarea:focus {
     outline: none; /* Remove default focus outline */
 }
 
-.form-container .btn-primary, .btn-primary{
+.form-container .btn-primary{
     display: inline-block; /* Ensure proper button alignment */
     background: #4c7a57;
     color: white;
@@ -258,7 +258,42 @@ textarea:focus {
 .form-container .btn-primary:hover {
     background: #bfa34b;
 }
+./* Consistent Button and Link Styles */
+.btn-primary {
+    display: inline-block; /* Consistent display for both <a> and <button> */
+    background: #4c7a57;
+    color: white;
+    font-size: 16px; /* Match the font size */
+    padding: 10px 20px; /* Match padding for consistent height */
+    margin: 20px 0;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    transition: background 0.3s ease;
+}
 
+.btn-primary:hover {
+    background: #bfa34b;
+}
+
+button.btn-primary {
+    appearance: none; /* Remove default button styling */
+    border: none; /* Remove browser default border */
+    box-shadow: none; /* Remove browser default shadow */
+    text-decoration: none;
+}
+
+a.btn-primary {
+    line-height: normal; /* Matches default line height of a <button> */
+    text-align: center; /* Ensures consistent alignment */
+    display: inline-flex; /* Centers text vertically */
+    align-items: center; /* Align text vertically within the box */
+    justify-content: center; /* Centers the text horizontally */
+    padding: 10px 20px; /* Same padding as button */
+    text-decoration: none;
+}
 
 
 
@@ -375,6 +410,158 @@ textarea:focus {
 }
 
 
+/* Specifične prilagodbe za kalkulator */
+.content-area h1 {
+    color: #4C7A57; /* Zelena iz vašeg CSS-a */
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.details-container table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+    background: #fff;
+}
+
+.details-container th, .details-container td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ccc;
+}
+
+.details-container th {
+    background-color: #4C7A57; /* Zelena */
+    color: white;
+}
+
+.details-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.details-container h1, .details-container h2 {
+    color: #4C7A57; /* Green */
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.details-container table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+.details-container th, .details-container td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ccc;
+}
+
+.details-container th {
+    background-color: #4C7A57; /* Green */
+    color: white;
+}
+
+.actions-section {
+    text-align: center;
+    margin: 20px 0;
+}
+
+
+.details-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.case-details p, .party-section p {
+    margin: 10px 0;
+    font-size: 1rem;
+}
+
+.custom-list {
+    list-style: none;
+    padding-left: 20px; /* Adds space from the left edge */
+    margin-bottom: 20px;
+}
+
+.custom-list li {
+    margin-bottom: 5px;
+    padding-left: 5px;
+}
+
+.styled-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 0.9rem;
+    text-align: left;
+}
+
+.styled-table th, .styled-table td {
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+}
+
+.styled-table th {
+    background-color: #f4f4f4;
+    text-align: center;
+    font-weight: bold;
+}
+
+.styled-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.buttons-container {
+    margin: 20px 0;
+}
+
+.buttons-container .btn {
+    margin-right: 10px;
+}
+
+.btn-primary {
+    display: inline-block;
+    padding: 8px 15px;
+    background-color: #4C7A57;
+    color: white;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.btn-primary:hover {
+    background-color: #bfa34b;
+}
+
+.btn-edit {
+    color: #fff;
+    background-color: #28a745;
+    padding: 5px 10px;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+.btn-delete {
+    color: #fff;
+    background-color: #dc3545;
+    padding: 5px 10px;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
 
 
 /* Footer */
@@ -386,3 +573,29 @@ footer {
     margin-top: 20px;
     width: 100%;
 }
+
+
+/* Details Container */
+.details-container {
+    max-width: 1000px; /* Increased from 900px to 1000px */
+    margin: 0 auto;
+    padding: 20px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Custom List */
+.custom-list {
+    list-style: none;
+    padding-left: 20px; /* Adds space from the left edge */
+    margin-bottom: 20px;
+}
+
+.custom-list li {
+    margin-bottom: 5px;
+    padding-left: 5px;
+}
+
+

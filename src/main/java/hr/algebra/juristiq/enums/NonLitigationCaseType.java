@@ -1,17 +1,32 @@
 package hr.algebra.juristiq.enums;
 
-public enum NonLitigationCaseType {
-    UGOVORI,
-    OPORUKA,
-    KONZULTACIJE,
-    MEDIJACIJA,
-    IZJAVA,
-    SAVJETOVANJE,
-    OVJERA_DOKUMENATA,
-    OSNIVANJE_TVRKI,
-    REVIZIJA_UGOVORA,
-    IZMJENA_DOKUMENATA,
-    ZAŠTITA_INTELEKTUALNOG_VLASNIŠTVA,
-    IMOVINSKO_PRAVNI_ODNOSI,
-    DRUGO;
+import hr.algebra.juristiq.intefaces.CaseTypeInterface;
+
+public enum NonLitigationCaseType implements CaseTypeInterface {
+    UGOVORI("Ugovori"),
+    OPORUKA("Oporuka"),
+    KONZULTACIJE ("Konzultacije"),
+    MEDIJACIJA("Medijacija"),
+
+    DRUGO("Drugo");
+
+    private final String displayName;
+
+    NonLitigationCaseType(String displayName) {
+        this.displayName = displayName;
+    }
+
+    @Override
+    public String getDisplayName() {
+        return displayName;
+    }
+
+    public static NonLitigationCaseType fromString(String displayName) {
+        for (NonLitigationCaseType type : NonLitigationCaseType.values()) {
+            if (type.getDisplayName().equalsIgnoreCase(displayName)) {
+                return type;
+            }
+        }
+        throw new IllegalArgumentException("Unknown display name: " + displayName);
+    }
 }

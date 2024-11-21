@@ -29,20 +29,27 @@
         </ul>
       </li>
       <li class="dropdown">
-        <a href="#">Odvjetnički Uredi</a>
+        <a href="#">Pravne organizacije</a>
         <ul class="dropdown-menu">
-          <li><a th:href="@{/JuristiQ/lawfirms}">Popis odvjetničkih ureda</a></li>
-          <li><a th:href="@{/JuristiQ/lawfirms/add}">Dodaj odvjetnički ured</a></li>
+          <li><a th:href="@{/JuristiQ/lawfirms}">Popis pravnih organizacija</a></li>
+          <li><a th:href="@{/JuristiQ/lawfirms/add}">Dodaj pravnu organizaciju</a></li>
         </ul>
       </li>
       <li class="dropdown">
-        <a href="#">Odvjetnici</a>
+        <a href="#">Pravnici/odvjetnici</a>
         <ul class="dropdown-menu">
-          <li><a th:href="@{/JuristiQ/lawyers}">Popis odvjetnika</a></li>
-          <li><a th:href="@{/JuristiQ/lawyers/add}">Dodaj odvjetnika</a></li>
+          <li><a th:href="@{/JuristiQ/lawyers}">Popis pravnika/odvjetnika</a></li>
+          <li><a th:href="@{/JuristiQ/lawyers/add}">Dodaj pravnika/odvjetnika</a></li>
         </ul>
       </li>
-      <li><a th:href="@{/JuristiQ/about}">O Aplikaciji</a></li>
+      <li class="dropdown">
+        <a href="#">Kalkulator troška</a>
+        <ul class="dropdown-menu">
+          <li><a th:href="@{/JuristiQ/cost-calculator/litigation}">Sudski troškovi</a></li>
+          <li><a th:href="@{/JuristiQ/cost-calculator/non-litigation}">Izvansudski troškovi</a></li>
+        </ul>
+      </li>
+
       <li><a th:href="@{/JuristiQ/contact}">Kontakt</a></li>
       <li><a th:href="@{/JuristiQ/login}">Prijava</a></li>
     </ul>

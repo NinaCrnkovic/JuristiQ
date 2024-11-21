@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{layout/base}">
 <head>
-    <title>Popis odvjetnika</title>
+    <title>Popis pravnika/odvjetnika</title>
 </head>
 <div th:fragment="content">
     <div class="table-container">
-        <h1>Popis odvjetnika</h1>
+        <h1>Popis pravnika/odvjetnika</h1>
 
         <!-- Search Form -->
         <form th:action="@{/JuristiQ/lawyers}" method="get" class="search-form">
@@ -14,7 +14,7 @@
         </form>
 
         <!-- Add Lawyer Button -->
-        <a th:href="@{/JuristiQ/lawyers/add}" class="btn btn-primary">Dodaj novog odvjetnika</a>
+        <a th:href="@{/JuristiQ/lawyers/add}" class="btn btn-primary">Dodaj novog pravnika/odvjetnika</a>
 
         <!-- Table -->
         <table>
@@ -25,7 +25,7 @@
                 <th>OIB</th>
                 <th>Email</th>
                 <th>Telefon</th>
-                <th>Odvjetnički ured</th>
+                <th>Pravna organizacija</th>
                 <th>Akcije</th>
             </tr>
             </thead>

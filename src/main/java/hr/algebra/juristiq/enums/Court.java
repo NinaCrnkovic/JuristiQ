@@ -1,5 +1,8 @@
 package hr.algebra.juristiq.enums;
 
+import lombok.Getter;
+
+@Getter
 public enum Court {
     OPĆINSKI_SUD_U_ZAGREBU("Općinski sud u Zagrebu"),
     OPĆINSKI_SUD_U_SPLITU("Općinski sud u Splitu"),
@@ -42,10 +45,6 @@ public enum Court {
 
     Court(String displayName) {
         this.displayName = displayName;
-    }
-
-    public String getDisplayName() {
-        return displayName;
     }
 
     @Override

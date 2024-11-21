@@ -20,6 +20,10 @@ public class NonLitigationCase {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String internalReferenceNumber;
+    private Double vps;
+
+
     @ManyToMany
     @JoinTable(
             name = "nonlitigation_represented",
@@ -36,9 +40,12 @@ public class NonLitigationCase {
     )
     private List<Client> opposingParties = new ArrayList<>();
 
-    private String internalReferenceNumber;
+
 
     @Enumerated(EnumType.STRING)
     private NonLitigationCaseType caseType; // Enum za tipove (npr. savjetovanje, ugovor)
+
+    @OneToMany(mappedBy = "litigationCase", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Document> documents = new ArrayList<>();
 }
 

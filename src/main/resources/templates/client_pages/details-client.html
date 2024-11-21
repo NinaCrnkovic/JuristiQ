@@ -14,7 +14,7 @@
         <p><strong>Telefon:</strong> <span th:text="${client.phoneNumber}"></span></p>
         <p><strong>Odvjetnik:</strong> <span th:text="${client.lawyer != null ? client.lawyer.name + ' ' + client.lawyer.surname : 'Nema odvjetnika'}"></span></p>
         <p><strong>Zastupan:</strong> <span th:text="${client.represented ? 'Da' : 'Ne'}"></span></p>
-        <a th:href="@{/JuristiQ/clients}" class="btn btn-primary">Nazad na popis</a>
+        <a th:href="@{/JuristiQ/clients}" class="btn-primary">Nazad na popis</a>
     </div>
 </div>
 </html>

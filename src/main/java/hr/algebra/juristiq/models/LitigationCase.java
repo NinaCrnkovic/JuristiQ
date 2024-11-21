@@ -1,6 +1,7 @@
 package hr.algebra.juristiq.models;
 
 import hr.algebra.juristiq.enums.Court;
+import hr.algebra.juristiq.enums.LitigationCaseType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -12,7 +13,6 @@ import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
-
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
@@ -34,6 +34,9 @@ public class LitigationCase {
 
     private Double vps;
 
+    @Enumerated(EnumType.STRING)
+    private LitigationCaseType caseType; // Novo polje za tip predmeta
+
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "litigation_represented",
@@ -51,11 +54,8 @@ public class LitigationCase {
     private List<Client> opposingParties = new ArrayList<>();
 
     @OneToMany(mappedBy = "litigationCase", cascade = CascadeType.ALL)
-
     private List<Action> actions = new ArrayList<>();
 
     @OneToMany(mappedBy = "litigationCase", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Document> documents = new ArrayList<>();
-
-    // Getters and Setters
 }

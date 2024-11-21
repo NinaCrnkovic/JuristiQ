@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{layout/base}">
 <head>
-    <title>Detalji odvjetničkog ureda</title>
+    <title>Detalji pravne organizacije</title>
 </head>
 <div th:fragment="content" class="content-area">
     <div class="details-container">
@@ -11,7 +11,7 @@
         <p><strong>Email:</strong> <span th:text="${lawFirm.email}"></span></p>
         <p><strong>Telefon:</strong> <span th:text="${lawFirm.phone}"></span></p>
 
-        <h2>Odvjetnici</h2>
+        <h2>Pravnici/odvjetnici</h2>
         <table>
             <thead>
             <tr>
@@ -30,7 +30,7 @@
             </tr>
             </tbody>
         </table>
-        <a th:href="@{/JuristiQ/lawfirms}" class="btn btn-primary">Nazad na popis</a>
+        <a th:href="@{/JuristiQ/lawfirms}" class="btn-primary">Nazad na popis</a>
     </div>
 </div>
 </html>

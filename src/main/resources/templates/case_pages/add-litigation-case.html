@@ -4,12 +4,19 @@
     <title>Dodaj sudski predmet</title>
 </head>
 <body>
-<div th:fragment="content" class="content-area">
+<div th:fragment="content" >
     <div class="form-container">
         <h1>Dodaj sudski predmet</h1>
         <form th:action="@{/JuristiQ/litigation-cases/add}" method="post">
             <label for="designation">Broj predmeta:</label>
             <input type="text" id="designation" name="designation" required>
+
+            <label for="caseType">Tip predmeta:</label>
+            <select id="caseType" name="caseType">
+                <option th:each="type : ${T(hr.algebra.juristiq.enums.LitigationCaseType).values()}"
+                        th:value="${type.name()}"
+                        th:text="${type.displayName}"></option>
+            </select>
 
             <label for="court">Sud:</label>
             <select id="court" name="court">
@@ -33,6 +40,7 @@
             </select>
 
             <button type="submit" class="btn btn-primary">Spremi</button>
+            <a th:href="@{/JuristiQ/litigation-cases}" class="btn-primary">Nazad na popis</a>
         </form>
     </div>
 </div>
