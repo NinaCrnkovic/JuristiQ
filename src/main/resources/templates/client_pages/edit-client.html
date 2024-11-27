@@ -24,6 +24,13 @@
         <label for="phone">Telefon:</label>
         <input type="tel" id="phone" th:field="*{phoneNumber}" required />
 
+        <label for="lawyer">Odvjetnik:</label>
+        <select id="lawyer" th:field="*{lawyer.id}">
+            <option th:each="lawyer : ${lawyers}" th:value="${lawyer.id}" th:text="${lawyer.name + ' ' + lawyer.surname}"></option>
+            <option value="">Nema odvjetnika</option>
+        </select>
+
+
         <button type="submit" class="btn btn-primary">Spremi</button>
         <a th:href="@{/JuristiQ/clients}" class="btn-primary">Nazad na popis</a>
     </form>

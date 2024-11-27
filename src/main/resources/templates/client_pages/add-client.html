@@ -40,10 +40,11 @@
 
             <!-- Lawyer -->
             <label for="lawyer">Odvjetnik:</label>
-            <select id="lawyer" name="lawyerId">
+            <select id="lawyer" name="lawyer.id">
                 <option th:each="lawyer : ${lawyers}" th:value="${lawyer.id}" th:text="${lawyer.name + ' ' + lawyer.surname}"></option>
                 <option value="">Nema odvjetnika</option>
             </select>
+
 
             <!-- Submit -->
             <button type="submit" class="btn btn-primary">Spremi</button>

@@ -1,6 +1,8 @@
 package hr.algebra.juristiq.controllers;
 
+import hr.algebra.juristiq.models.Action;
 import hr.algebra.juristiq.models.Client;
+import hr.algebra.juristiq.services.ActionService;
 import hr.algebra.juristiq.services.ClientService;
 import hr.algebra.juristiq.services.LawyerService;
 import lombok.AllArgsConstructor;
@@ -9,13 +11,16 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
+
 @Controller
 @RequestMapping("/JuristiQ/clients")
 @AllArgsConstructor
 public class ClientController {
 
     private final ClientService clientService;
-    private final LawyerService lawyerService; // Inject LawyerService to fetch the lawyer list
+    private final LawyerService lawyerService;
+    private final ActionService actionService;
 
     @GetMapping
     public String getAllClients(Model model) {
@@ -33,6 +38,10 @@ public class ClientController {
 
     @PostMapping("/add")
     public String addClient(@ModelAttribute Client client) {
+        // Ako nije odabran odvjetnik, postavite lawyer na null
+        if (client.getLawyer() != null && client.getLawyer().getId() == null) {
+            client.setLawyer(null);
+        }
         clientService.saveClient(client);
         return "redirect:/JuristiQ/clients"; // Redirect to the list of clients
     }
@@ -48,9 +57,16 @@ public class ClientController {
 
     @PostMapping("/edit/{id}")
     public String editClient(@PathVariable Long id, @ModelAttribute Client client) {
-        client.setId(id); // Ensure existing client is updated
-        clientService.saveClient(client);
-        return "redirect:/JuristiQ/clients"; // Redirect to the list of clients
+        Client existingClient = clientService.getClientById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid client ID: " + id));
+
+        // Ako je odabrano ažuriranje odvjetnika
+        if (client.getLawyer() != null) {
+            existingClient.setLawyer(client.getLawyer());
+        }
+
+        clientService.saveClient(existingClient);
+        return "redirect:/JuristiQ/clients";
     }
 
     @GetMapping("/delete/{id}")
@@ -66,5 +82,9 @@ public class ClientController {
         model.addAttribute("client", client);
         return "client_pages/details-client";
     }
+
+
+
+
 
 }

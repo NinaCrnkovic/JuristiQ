@@ -35,7 +35,8 @@
             <td th:text="${case.court}"></td>
             <td th:text="${case.caseType}"></td>
             <td th:text="${case.judge ?: 'N/A'}"></td>
-            <td th:text="${case.vps ?: 'N/A'}"></td>
+
+            <td th:text="${#numbers.formatDecimal(case.vps, 2, 2) + ' EUR'}"></td>
             <td>
                 <span th:each="party : ${case.representedParties}" th:text="${party.name + ' ' + party.surname + ', '}"></span>
             </td>

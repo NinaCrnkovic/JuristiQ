@@ -12,7 +12,7 @@
         <p><strong>Vrste predmeta:</strong> <span th:text="${litigationCase.caseType.displayName}"></span></p>
         <p><strong>Sud:</strong> <span th:text="${litigationCase.court}"></span></p>
         <p><strong>Sudac:</strong> <span th:text="${litigationCase.judge}"></span></p>
-        <p><strong>Vrijednost Spora:</strong> <span th:text="${litigationCase.vps} + ' EUR'"></span></p>
+        <p><strong>Vrijednost Spora:</strong> <span th:text="${#numbers.formatDecimal(litigationCase.vps, 2, 2) + ' EUR'}"></span></p>
     </div>
 
     <div class="party-section">
@@ -59,7 +59,7 @@
             <tbody>
             <tr th:each="action : ${litigationCase.actions}">
                 <td th:text="${action.type.displayName}"></td>
-                <td th:text="${action.amount} + ' EUR'"></td>
+                <td th:text="${#numbers.formatDecimal(action.amount, 2, 2) + ' EUR'}"></td>
                 <td th:text="${action.date}"></td>
                 <td th:text="${action.time != null ? action.time : 'N/A'}"></td>
                 <td th:text="${action.deadlineDays != null ? action.deadlineDays + ' dana' : 'N/A'}"></td>

@@ -4,6 +4,7 @@ import hr.algebra.juristiq.enums.ActionType;
 import hr.algebra.juristiq.enums.LitigationCaseType;
 import hr.algebra.juristiq.models.Action;
 
+import hr.algebra.juristiq.models.Client;
 import hr.algebra.juristiq.models.LitigationCase;
 import hr.algebra.juristiq.services.ActionService;
 import hr.algebra.juristiq.services.CostCalculationService;
@@ -12,6 +13,9 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/JuristiQ/actions")
@@ -97,6 +101,10 @@ public class ActionController {
         actionService.deleteAction(actionId);
         return "redirect:/litigation-cases/details/" + caseId;
     }
+
+
+
+
 
 
 }

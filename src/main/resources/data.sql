@@ -41,3 +41,5 @@ INSERT INTO CLIENT (name, surname, oib, address, email, phone_number, represente
                                                                                                   ('Nikolina', 'Grgić', '90123456789', 'Zagrebačka avenija 50, Zagreb', 'nikolina.grgic@example.com', '0999999999', TRUE, 1),
                                                                                                   ('Filip', 'Vuković', '01234567890', 'Istarska ulica 21, Pula', 'filip.vukovic@example.com', '0921231231', TRUE, 2);
 
+
+

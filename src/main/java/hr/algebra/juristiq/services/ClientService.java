@@ -28,11 +28,20 @@ public class ClientService {
     }
 
     public Client saveClient(Client client) {
-        if (clientRepository.existsByOib(client.getOib())) {
+        // Ako je klijent već u bazi, ne provodimo provjeru OIB-a
+        if (client.getId() != null) {
+            Client existingClient = clientRepository.findById(client.getId())
+                    .orElseThrow(() -> new IllegalArgumentException("Client not found"));
+            // Provjera da li se OIB promijenio
+            if (!existingClient.getOib().equals(client.getOib()) && clientRepository.existsByOib(client.getOib())) {
+                throw new IllegalArgumentException("Client with the same OIB already exists.");
+            }
+        } else if (clientRepository.existsByOib(client.getOib())) {
             throw new IllegalArgumentException("Client with the same OIB already exists.");
         }
         return clientRepository.save(client);
     }
+
 
     public void deleteClient(Long id) {
         clientRepository.deleteById(id);

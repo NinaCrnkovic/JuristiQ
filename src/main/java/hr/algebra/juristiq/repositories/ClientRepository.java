@@ -14,6 +14,7 @@ public interface ClientRepository extends JpaRepository<Client, Long> {
     Client findByOib(String oib);
     boolean existsByOib(String oib);
 
+
     List<Client> findAllById(Iterable<Long> ids);
 
     @Query("SELECT c FROM Client c WHERE " +

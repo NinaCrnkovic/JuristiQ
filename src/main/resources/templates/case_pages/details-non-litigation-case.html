@@ -18,15 +18,18 @@
     <ul class="custom-list">
       <li th:each="party : ${nonLitigationCase.representedParties}">
         <span th:text="${party.name + ' ' + party.surname + ' (OIB: ' + party.oib + ')'}"></span>
+        <span> Zastupan po: </span>
+        <span th:text="${party.lawyer != null ? party.lawyer.name + ' ' + party.lawyer.surname : 'Nema odvjetnika'}"></span>
       </li>
     </ul>
-  </div>
 
   <div class="party-section">
     <p><strong>Suprotne strane:</strong></p>
     <ul class="custom-list">
       <li th:each="party : ${nonLitigationCase.opposingParties}">
         <span th:text="${party.name + ' ' + party.surname + ' (OIB: ' + party.oib + ')'}"></span>
+        <span> Zastupan po: </span>
+        <span th:text="${party.lawyer != null ? party.lawyer.name + ' ' + party.lawyer.surname : 'Nema odvjetnika'}"></span>
       </li>
     </ul>
   </div>

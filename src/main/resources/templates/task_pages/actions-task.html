@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{layout/base}">
+<head>
+    <title>Pravne radnje</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<div th:fragment="content" class="form-container expanded-container">
+    <h2>Pravne radnje</h2>
+    <div class="action-container">
+        <!-- Column 1: Ročišta -->
+        <div class="column">
+            <h3>Ročišta</h3>
+            <div th:each="action : ${hearings}" class="action-card styled-card">
+                <p><strong>Datum i vrijeme:</strong>
+                    <span th:text="${action.date != null ? action.date + ' ' + (action.time != null ? action.time : 'N/A') : 'N/A'}"></span>
+                </p>
+                <p><strong>Broj predmeta:</strong>
+                    <span th:text="${action.litigationCase != null ? action.litigationCase.designation : 'N/A'}"></span>
+                </p>
+                <p><strong>Vrsta radnje:</strong>
+                    <span th:text="${action.type.displayName}">N/A</span>
+                </p>
+                <p><strong>Stranka:</strong>
+                    <span th:each="party : ${action.litigationCase.representedParties}" th:text="${party.name + ' ' + party.surname}">N/A</span>
+                </p>
+                <p><strong>Odvjetnik:</strong>
+                    <span th:each="party : ${action.litigationCase.representedParties}" th:text="${party.lawyer != null ? party.lawyer.name + ' ' + party.lawyer.surname : 'N/A'}">N/A</span>
+                </p>
+                <p><strong>Rok:</strong>
+                    <span th:text="${action.deadlineDays != null ? action.deadlineDays : 'N/A'}"></span>
+                </p>
+                <a th:href="@{/JuristiQ/litigation-cases/{id}/details(id=${action.litigationCase.id})}" class="btn btn-details">Detalji</a>
+            </div>
+        </div>
+
+        <!-- Column 2: Ostale pravne radnje -->
+        <div class="column">
+            <h3>Ostale pravne radnje</h3>
+            <div th:each="action : ${otherLitigationActions}" class="action-card styled-card">
+                <p><strong>Datum i vrijeme:</strong>
+                    <span th:text="${action.date != null ? action.date + ' ' + (action.time != null ? action.time : 'N/A') : 'N/A'}"></span>
+                </p>
+                <p><strong>Broj predmeta:</strong>
+                    <span th:text="${action.litigationCase != null ? action.litigationCase.designation : 'N/A'}"></span>
+                </p>
+                <p><strong>Vrsta radnje:</strong>
+                    <span th:text="${action.type.displayName}">N/A</span>
+                </p>
+                <p><strong>Stranka:</strong>
+                    <span th:each="party : ${action.litigationCase.representedParties}" th:text="${party.name + ' ' + party.surname}">N/A</span>
+                </p>
+                <p><strong>Odvjetnik:</strong>
+                    <span th:each="party : ${action.litigationCase.representedParties}" th:text="${party.lawyer != null ? party.lawyer.name + ' ' + party.lawyer.surname : 'N/A'}">N/A</span>
+                </p>
+                <p><strong>Rok:</strong>
+                    <span th:text="${action.deadlineDays != null ? action.deadlineDays : 'N/A'}"></span>
+                </p>
+                <a th:href="@{/JuristiQ/litigation-cases/{id}/details(id=${action.litigationCase.id})}" class="btn btn-details">Detalji</a>
+            </div>
+        </div>
+
+        <!-- Column 3: Nepravne radnje -->
+        <div class="column">
+            <h3>Nepravne radnje</h3>
+            <div th:each="action : ${nonLitigationActions}" class="action-card styled-card">
+                <p><strong>Datum i vrijeme:</strong>
+                    <span th:text="${action.date != null ? action.date + ' ' + (action.time != null ? action.time : 'N/A') : 'N/A'}"></span>
+                </p>
+                <p><strong>Broj predmeta:</strong>
+                    <span th:text="${action.nonLitigationCase != null ? action.nonLitigationCase.internalReferenceNumber : 'N/A'}"></span>
+                </p>
+                <p><strong>Vrsta radnje:</strong>
+                    <span th:text="${action.type.displayName}">N/A</span>
+                </p>
+                <p><strong>Stranka:</strong>
+                    <span th:each="party : ${action.nonLitigationCase.representedParties}" th:text="${party.name + ' ' + party.surname}">N/A</span>
+                </p>
+                <p><strong>Odvjetnik:</strong>
+                    <span th:each="party : ${action.nonLitigationCase.representedParties}" th:text="${party.lawyer != null ? party.lawyer.name + ' ' + party.lawyer.surname : 'N/A'}">N/A</span>
+                </p>
+                <a th:href="@{/JuristiQ/non-litigation-cases/details/{id}(id=${action.nonLitigationCase.id})}" class="btn btn-details">Detalji</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+</html>
+
+
