@@ -1,6 +1,7 @@
 package hr.algebra.juristiq.controllers;
 
 import hr.algebra.juristiq.models.LawFirm;
+import hr.algebra.juristiq.services.EmailService;
 import hr.algebra.juristiq.services.LawFirmService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -15,6 +16,7 @@ import java.util.List;
 public class LawFirmController {
 
     private final LawFirmService lawFirmService;
+    private final EmailService emailService;
 
     @GetMapping
     public String getAllLawFirms(@RequestParam(value = "keyword", required = false) String keyword, Model model) {
@@ -64,5 +66,23 @@ public class LawFirmController {
         model.addAttribute("lawFirm", lawFirm);
         return "lawfirm_pages/details-lawfirm";
     }
+
+
+
+    @PostMapping("/auth/register-law-firm")
+    public String registerLawFirm(@ModelAttribute LawFirm lawFirm, Model model) {
+        // Spremi odvjetnički ured
+        lawFirmService.saveLawFirm(lawFirm);
+
+        // Generiraj registracijski kod
+        String registrationCode = lawFirmService.generateRegistrationCode(lawFirm.getId());
+
+        // Dodaj registracijski kod u model
+        model.addAttribute("registrationCode", registrationCode);
+
+        // Prikaži međustranicu s kodom
+        return "auth_pages/registration-code";
+    }
+
 
 }

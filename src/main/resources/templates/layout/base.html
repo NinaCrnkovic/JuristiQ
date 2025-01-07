@@ -2,28 +2,23 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <title>JuristiQ - Web Application</title>
-  <!-- FullCalendar CSS -->
-
-
-
-
   <link rel="stylesheet" th:href="@{/css/styles.css}" />
 </head>
 <body>
 <header>
   <nav>
     <ul class="navbar">
+      <!-- Navigacija za prijavljene korisnike -->
       <li><a th:href="@{/JuristiQ/home}">Početna</a></li>
       <li class="dropdown">
         <a href="#">Predmeti</a>
         <ul class="dropdown-menu">
           <li><a th:href="@{/JuristiQ/litigation-cases}">Popis sudskih predmeta</a></li>
           <li><a th:href="@{/JuristiQ/non-litigation-cases}">Popis izvansudskih predmeta</a></li>
-
           <li><a th:href="@{/JuristiQ/litigation-cases/add}">Dodaj sudski predmet</a></li>
           <li><a th:href="@{/JuristiQ/non-litigation-cases/add}">Dodaj izvansudski predmet</a></li>
-
-
+          <li><a th:href="@{/JuristiQ/litigation-cases/archived}">Arhiv sudskih predmeta</a></li>
+          <li><a th:href="@{/JuristiQ/non-litigation-cases/archived}">Arhiv izvansudskih predmeta</a></li>
         </ul>
       </li>
       <li class="dropdown">
@@ -54,16 +49,16 @@
           <li><a th:href="@{/JuristiQ/cost-calculator/non-litigation}">Izvansudski troškovi</a></li>
         </ul>
       </li>
-
       <li><a th:href="@{/JuristiQ/actions-task}">Dnevnik pravnih aktivnosti</a></li>
-      <li><a th:href="@{/JuristiQ/login}">Prijava</a></li>
+      <!-- Gumb za odjavu -->
+      <li><a th:href="@{/JuristiQ/auth/welcome}">Odjava</a></li>
     </ul>
   </nav>
 </header>
 
-<!-- Fragment content placeholder -->
+<!-- Sadržaj stranice -->
 <div th:replace="~{::content}">
-  <!-- Placeholder for specific page content -->
+  <!-- Placeholder za specifičan sadržaj stranice -->
 </div>
 
 <footer>
@@ -71,5 +66,3 @@
 </footer>
 </body>
 </html>
-
-

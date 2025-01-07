@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 
 @Controller
@@ -24,12 +25,13 @@ public class NonLitigationCaseController {
     @GetMapping
     public String listNonLitigationCases(@RequestParam(value = "search", required = false) String search, Model model) {
         List<NonLitigationCase> nonLitigationCases = (search != null && !search.isEmpty())
-                ? nonLitigationCaseService.searchNonLitigationCases(search)
-                : nonLitigationCaseService.getAllNonLitigationCases();
+                ? nonLitigationCaseService.searchNonArchivedNonLitigationCases(search)
+                : nonLitigationCaseService.getNonArchivedNonLitigationCases();
         model.addAttribute("nonLitigationCases", nonLitigationCases);
         model.addAttribute("search", search);
         return "case_pages/list-non-litigation-cases";
     }
+
 
     @GetMapping("/add")
     public String showAddForm(Model model) {
@@ -93,4 +95,36 @@ public class NonLitigationCaseController {
         model.addAttribute("nonLitigationCase", caseDetails);
         return "case_pages/details-non-litigation-case"; // Ovaj naziv mora odgovarati nazivu HTML datoteke.
     }
+
+    @GetMapping("/{id}/archive")
+    public String archiveCase(@PathVariable Long id) {
+        nonLitigationCaseService.archiveCase(id, true);
+        return "redirect:/JuristiQ/non-litigation-cases";
+    }
+
+    @GetMapping("/{id}/unarchive")
+    public String unarchiveCase(@PathVariable Long id) {
+        nonLitigationCaseService.archiveCase(id, false);
+        return "redirect:/JuristiQ/non-litigation-cases/archived";
+    }
+
+    @GetMapping("/archived")
+    public String listArchivedCases(Model model) {
+        List<NonLitigationCase> archivedCases = nonLitigationCaseService.getArchivedNonLitigationCases();
+        model.addAttribute("nonLitigationCases", archivedCases);
+        return "case_pages/arhiv-list-non-litigation-cases";
+    }
+
+    @GetMapping("/my-cases-non-litigation")
+    public String listMyNonLitigationCases(Model model, Principal principal) {
+        if (principal != null) {
+            String email = principal.getName(); // Get the logged-in user's email
+            List<NonLitigationCase> myNonLitigationCases = nonLitigationCaseService.getCasesByLawyerEmail(email);
+            model.addAttribute("nonLitigationCases", myNonLitigationCases);
+        } else {
+            model.addAttribute("nonLitigationCases", List.of());
+        }
+        return "case_pages/list-my-non-litigation-cases";
+    }
+
 }

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{layout/base}">
+<head>
+    <title>Moji klijenti</title>
+</head>
+<div th:fragment="content">
+    <div class="table-container">
+        <h1>Moji klijenti</h1>
+
+        <table>
+            <thead>
+            <tr>
+                <th>Ime</th>
+                <th>Prezime</th>
+                <th>Adresa</th>
+                <th>Email</th>
+                <th>Telefon</th>
+                <th>Akcije</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="client : ${clients}">
+                <td th:text="${client.name}"></td>
+                <td th:text="${client.surname}"></td>
+                <td th:text="${client.address}"></td>
+                <td th:text="${client.email}"></td>
+                <td th:text="${client.phoneNumber}"></td>
+                <td>
+                    <a th:href="@{/JuristiQ/clients/edit/{id}(id=${client.id})}" class="btn btn-edit">Uredi</a>
+                    <a th:href="@{/JuristiQ/clients/delete/{id}(id=${client.id})}" class="btn btn-delete">Obriši</a>
+                    <a th:href="@{/JuristiQ/clients/{id}/details(id=${client.id})}" class="btn btn-details">Detalji</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</html>

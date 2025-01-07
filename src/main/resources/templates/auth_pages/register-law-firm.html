@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Registracija odvjetničkog ureda</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
+</head>
+<body>
+<div class="form-container">
+    <h1>Registracija odvjetničkog ureda</h1>
+    <form th:action="@{/JuristiQ/lawfirms/auth/register-law-firm}" method="post">
+        <label for="name">Naziv ureda:</label>
+        <input type="text" id="name" name="name" required>
+        <label for="oib">OIB:</label>
+        <input type="text" id="oib" name="oib" required>
+        <label for="address">Adresa:</label>
+        <input type="text" id="address" name="address" required>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <button type="submit" class="btn-primary">Registracija</button>
+    </form>
+</div>
+</body>
+</html>

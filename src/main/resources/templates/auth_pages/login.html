@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Prijava</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
+</head>
+<body>
+<div class="form-container">
+    <h1>Prijava</h1>
+    <form action="/login" method="post">
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+        <label for="username">Email:</label>
+        <input type="text" id="username" name="username" required>
+        <label for="password">Lozinka:</label>
+        <input type="password" id="password" name="password" required>
+        <button type="submit" class="btn-primary">Prijava</button>
+    </form>
+</div>
+</body>
+</html>
+
+

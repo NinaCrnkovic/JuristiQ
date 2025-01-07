@@ -3,11 +3,11 @@
 <head>
     <title>Dodaj Klijenta</title>
 </head>
-<div th:fragment="content" class="content-area">
+<div th:fragment="content" >
     <div class="form-container">
         <h1>Dodaj Klijenta</h1>
         <form action="/JuristiQ/clients/add" method="post">
-            <!-- Name -->
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
             <label for="name">Ime:</label>
             <input type="text" id="name" name="name" required>
 

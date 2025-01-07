@@ -7,6 +7,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface LawFirmRepository extends JpaRepository<LawFirm, Long> {
@@ -18,4 +19,7 @@ public interface LawFirmRepository extends JpaRepository<LawFirm, Long> {
             "LOWER(l.email) LIKE LOWER(CONCAT('%', :keyword, '%')) OR " +
             "LOWER(l.phone) LIKE LOWER(CONCAT('%', :keyword, '%'))")
     List<LawFirm> searchByKeyword(@Param("keyword") String keyword);
+
+    Optional<LawFirm> findByRegistrationCode(String registrationCode);
+
 }

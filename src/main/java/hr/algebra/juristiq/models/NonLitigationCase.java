@@ -55,6 +55,10 @@ public class NonLitigationCase {
     @OneToMany(mappedBy = "nonLitigationCase", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Document> documents = new ArrayList<>();
 
+    @Column(nullable = false)
+    private boolean isArchived = false; // Default is not archived
+
+
 }
 
 

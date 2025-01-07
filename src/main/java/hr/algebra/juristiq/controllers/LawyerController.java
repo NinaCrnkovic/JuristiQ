@@ -1,9 +1,14 @@
 package hr.algebra.juristiq.controllers;
 
+import hr.algebra.juristiq.config.SecurityConfiguration;
+import hr.algebra.juristiq.models.LawFirm;
 import hr.algebra.juristiq.models.Lawyer;
+import hr.algebra.juristiq.models.User;
 import hr.algebra.juristiq.services.LawFirmService;
 import hr.algebra.juristiq.services.LawyerService;
+import hr.algebra.juristiq.services.UserService;
 import lombok.AllArgsConstructor;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +22,8 @@ public class LawyerController {
 
     private final LawyerService lawyerService;
     private final LawFirmService lawFirmService;
+    private final UserService userService;
+    private final SecurityConfiguration securityConfig;
 
     @GetMapping
     public String getAllLawyers(@RequestParam(value = "query", required = false) String query, Model model) {
@@ -62,4 +69,35 @@ public class LawyerController {
         lawyerService.deleteLawyer(id);
         return "redirect:/JuristiQ/lawyers"; // Preusmjerava na popis odvjetnika
     }
+
+    @PostMapping("/auth/register-lawyer")
+    public String registerLawyer(@ModelAttribute Lawyer lawyer,
+                                 @RequestParam String registrationCode,
+                                 @RequestParam String username,
+                                 @RequestParam String password,
+                                 Model model) {
+        // Provjera koda odvjetničkog ureda
+        LawFirm lawFirm = lawFirmService.findByRegistrationCode(registrationCode)
+                .orElseThrow(() -> new IllegalArgumentException("Neispravan registracijski kod."));
+
+        // Postavljanje odvjetničkog ureda odvjetniku
+        lawyer.setLawFirm(lawFirm);
+
+        // Spremanje odvjetnika
+        lawyerService.saveLawyer(lawyer);
+
+        // Stvaranje korisnika za odvjetnika
+        User user = new User();
+        user.setUsername(username);
+        user.setPassword(securityConfig.passwordEncoder().encode(password)); // Hashiranje lozinke
+        user.setLawyer(lawyer);
+        userService.saveUser(user);
+
+        model.addAttribute("message", "Registracija odvjetnika uspješna!");
+
+        return "redirect:/JuristiQ/auth/login";
+    }
+
+
+
 }

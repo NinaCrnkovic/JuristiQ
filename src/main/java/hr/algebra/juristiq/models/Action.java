@@ -35,6 +35,11 @@ public class Action {
     @ManyToOne
     @JoinColumn(name = "litigation_case_id")
     private LitigationCase litigationCase;
+
+    @ManyToOne
+    @JoinColumn(name = "lawyer_id")
+    private Lawyer lawyer;
+
 }
 
 

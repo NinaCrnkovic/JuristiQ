@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 @AllArgsConstructor
@@ -37,5 +38,19 @@ public class LawFirmService {
     public List<LawFirm> searchLawFirms(String keyword) {
         return (keyword == null || keyword.isEmpty()) ? lawFirmRepository.findAll() : lawFirmRepository.searchByKeyword(keyword);
     }
+
+    public String generateRegistrationCode(Long lawFirmId) {
+        LawFirm lawFirm = lawFirmRepository.findById(lawFirmId)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid Law Firm ID"));
+        String registrationCode = UUID.randomUUID().toString();
+        lawFirm.setRegistrationCode(registrationCode);
+        lawFirmRepository.save(lawFirm);
+        return registrationCode;
+    }
+    public Optional<LawFirm> findByRegistrationCode(String registrationCode) {
+        return lawFirmRepository.findByRegistrationCode(registrationCode);
+    }
+
+
 }
 

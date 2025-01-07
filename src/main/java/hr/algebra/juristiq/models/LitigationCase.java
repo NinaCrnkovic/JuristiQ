@@ -35,7 +35,7 @@ public class LitigationCase {
     private Double vps;
 
     @Enumerated(EnumType.STRING)
-    private LitigationCaseType caseType; // Novo polje za tip predmeta
+    private LitigationCaseType caseType;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
@@ -58,4 +58,7 @@ public class LitigationCase {
 
     @OneToMany(mappedBy = "litigationCase", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Document> documents = new ArrayList<>();
+
+    @Column(nullable = false)
+    private boolean isArchived = false; // Default is not archived
 }

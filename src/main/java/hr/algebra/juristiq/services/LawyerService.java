@@ -33,6 +33,14 @@ public class LawyerService {
     public List<Lawyer> searchLawyers(String searchTerm) {
         return lawyerRepository.searchByAllProperties(searchTerm);
     }
+
+    public Lawyer findById(Long id) {
+        return lawyerRepository.findById(id).orElse(null);
+    }
+
+    public Lawyer findByEmail(String email) {
+        return lawyerRepository.findByEmail(email);
+    }
 }
 
 

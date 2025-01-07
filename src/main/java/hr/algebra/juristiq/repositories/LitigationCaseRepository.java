@@ -11,9 +11,15 @@ import java.util.List;
 
 @Repository
 public interface LitigationCaseRepository extends JpaRepository<LitigationCase, Long> {
-    @Query("SELECT lc FROM LitigationCase lc WHERE " +
-            "LOWER(lc.designation) LIKE LOWER(CONCAT('%', :searchTerm, '%')) " +
-            "OR LOWER(lc.judge) LIKE LOWER(CONCAT('%', :searchTerm, '%')) " +
-            "OR lc.court LIKE CONCAT('%', :searchTerm, '%')")
-    List<LitigationCase> searchByKeyword(@Param("searchTerm") String searchTerm);
+    List<LitigationCase> findByIsArchivedFalse();
+
+    List<LitigationCase> findByIsArchivedTrue();
+
+    @Query("SELECT lc FROM LitigationCase lc WHERE lc.isArchived = false AND " +
+            "(lc.designation LIKE %:keyword% OR lc.judge LIKE %:keyword%)")
+    List<LitigationCase> searchByKeywordAndIsArchivedFalse(String keyword);
+
+    @Query("SELECT lc FROM LitigationCase lc WHERE lc.designation LIKE %:keyword% OR lc.judge LIKE %:keyword%")
+    List<LitigationCase> searchByKeyword(String keyword);
+
 }

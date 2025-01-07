@@ -33,7 +33,7 @@
             <td>
                 <a th:href="@{/JuristiQ/non-litigation-cases/edit/{id}(id=${case.id})}" class="btn btn-edit">Uredi</a>
                 <a th:href="@{/JuristiQ/non-litigation-cases/details/{id}(id=${case.id})}" class="btn btn-details">Detalji</a>
-                <a th:href="@{/JuristiQ/non-litigation-cases/{id}/archive(id=${case.id})}" class="btn btn-delete">Arhiviraj</a>
+                <a th:href="@{/JuristiQ/non-litigation-cases/{id}/unarchive(id=${case.id})}" class="btn btn-edit">Vrati iz arhive</a>
                 <a th:href="@{/JuristiQ/non-litigation-cases/delete/{id}(id=${case.id})}"
                    class="btn btn-delete"
                    onclick="return confirm('Jeste li sigurni da želite obrisati ovaj predmet?');">Obriši</a>

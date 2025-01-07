@@ -16,4 +16,14 @@ public interface NonLitigationCaseRepository extends JpaRepository<NonLitigation
             "LOWER(nlc.internalReferenceNumber) LIKE LOWER(CONCAT('%', :searchTerm, '%')) " +
             "OR LOWER(nlc.caseType) LIKE LOWER(CONCAT('%', :searchTerm, '%'))")
     List<NonLitigationCase> searchByKeyword(@Param("searchTerm") String searchTerm);
+    @Query("SELECT nlc FROM NonLitigationCase nlc WHERE nlc.isArchived = false AND " +
+            "(LOWER(nlc.internalReferenceNumber) LIKE LOWER(CONCAT('%', :searchTerm, '%')) " +
+            "OR LOWER(nlc.caseType) LIKE LOWER(CONCAT('%', :searchTerm, '%')))")
+    List<NonLitigationCase> searchByKeywordAndIsArchivedFalse(@Param("searchTerm") String searchTerm);
+
+
+    List<NonLitigationCase> findByIsArchivedFalse();
+
+    List<NonLitigationCase> findByIsArchivedTrue();
+
 }

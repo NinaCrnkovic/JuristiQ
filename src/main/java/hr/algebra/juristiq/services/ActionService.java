@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -49,5 +50,13 @@ public class ActionService {
     public List<Action> getAllActions() {
         return actionRepository.findAll();
     }
+
+    public List<Action> findActionsByLawyerEmail(String email) {
+        return actionRepository.findAll().stream()
+                .filter(action -> action.getLawyer() != null && action.getLawyer().getEmail().equals(email))
+                .collect(Collectors.toList());
+    }
+
+
 }
 

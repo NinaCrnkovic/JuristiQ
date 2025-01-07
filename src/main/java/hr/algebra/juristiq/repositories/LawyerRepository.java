@@ -23,4 +23,6 @@ public interface LawyerRepository extends JpaRepository<Lawyer, Long> {
             "LOWER(l.email) LIKE LOWER(CONCAT('%', :searchTerm, '%')) OR " +
             "LOWER(l.phone) LIKE LOWER(CONCAT('%', :searchTerm, '%'))")
     List<Lawyer> searchByAllProperties(@Param("searchTerm") String searchTerm);
+
+    Lawyer findByEmail(String email);
 }

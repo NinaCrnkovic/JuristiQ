@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 
 @Controller
@@ -21,12 +22,9 @@ public class LitigationCaseController {
     private final LitigationCaseService litigationCaseService;
     private final ClientService clientService;
 
-    // List all litigation cases
     @GetMapping
     public String listLitigationCases(@RequestParam(value = "search", required = false) String search, Model model) {
-        List<LitigationCase> litigationCases = (search != null && !search.isEmpty())
-                ? litigationCaseService.searchLitigationCases(search)
-                : litigationCaseService.getAllLitigationCases();
+        List<LitigationCase> litigationCases = litigationCaseService.getNonArchivedLitigationCases(search);
         model.addAttribute("litigationCases", litigationCases);
         model.addAttribute("search", search);
         return "case_pages/list-litigation-cases";
@@ -108,4 +106,38 @@ public class LitigationCaseController {
         model.addAttribute("litigationCase", litigationCase);
         return "case_pages/details-litigation-case";
     }
+    @GetMapping("/archived")
+    public String listArchivedLitigationCases(Model model) {
+        List<LitigationCase> archivedCases = litigationCaseService.getArchivedLitigationCases();
+        model.addAttribute("litigationCases", archivedCases);
+        return "case_pages/arhiv-list-litigation-cases";
+    }
+
+    @GetMapping("/{id}/archive")
+    public String archiveCase(@PathVariable Long id) {
+        litigationCaseService.archiveCase(id, true);
+        return "redirect:/JuristiQ/litigation-cases";
+    }
+
+
+    @GetMapping("/{id}/unarchive")
+    public String unarchiveCase(@PathVariable Long id) {
+        litigationCaseService.archiveCase(id, false);
+        return "redirect:/JuristiQ/litigation-cases/archived";
+    }
+
+    @GetMapping("/my-cases")
+    public String listMyLitigationCases(Principal principal, Model model) {
+        if (principal != null) {
+            String email = principal.getName(); // Get the logged-in lawyer's email
+            List<LitigationCase> myLitigationCases = litigationCaseService.getCasesByLawyerEmail(email);
+            model.addAttribute("litigationCases", myLitigationCases);
+        } else {
+            model.addAttribute("litigationCases", List.of());
+        }
+        return "case_pages/list-my-litigation-cases";
+    }
+
+
 }
+

@@ -3,16 +3,27 @@
 <head>
     <title>Home</title>
 </head>
-<div th:fragment="content" class="content-area">
-    <h1>Welcome to JuristiQ</h1>
+<body>
+<div th:fragment="content" class="welcome-container">
+    <h1 class="welcome-title">Dobrodošli, <span th:text="${lawyer.name}"></span>!</h1>
+    <section class="welcome-text">
+        <p>
+            JuristiQ je sustav dizajniran za efikasno vođenje pravnih predmeta i aktivnosti.
+            Naš cilj je omogućiti odvjetnicima i pravnim timovima da jednostavno upravljaju sudskim i izvansudskim slučajevima,
+            prate rokove, vode detaljne evidencije i održavaju transparentnost prema klijentima.
+        </p>
+        <p>
+            Prijavljeni korisnici mogu pristupiti svojim slučajevima, pravnim zadacima i arhivima putem navigacijskog izbornika.
+        </p>
+    </section>
 
-    <!-- Dodajemo izbor opcija -->
-    <div class="options">
-        <a href="/JuristiQ/my-cases" class="btn">My Cases</a>
-        <a href="/JuristiQ/all-cases" class="btn">All Cases</a>
-        <a href="/JuristiQ/my-clients" class="btn">My Clients</a>
-        <a href="/JuristiQ/all-clients" class="btn">All Clients</a>
+    <div class="welcome-buttons">
+        <a th:href="@{/JuristiQ/litigation-cases/my-cases}" class="btn-primary">Moji sudski predmeti</a>
+        <a th:href="@{/JuristiQ/non-litigation-cases/my-cases-non-litigation}" class="btn-primary">Moji izvansudski predmeti</a>
+        <a th:href="@{/JuristiQ/clients/my-clients}" class="btn-primary">Moji klijenti</a>
+
     </div>
 </div>
 </body>
 </html>
+

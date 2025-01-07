@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -83,6 +84,17 @@ public class ClientController {
         return "client_pages/details-client";
     }
 
+    @GetMapping("/my-clients")
+    public String getMyClients(Model model, Principal principal) {
+        if (principal != null) {
+            String email = principal.getName(); // Dohvat emaila prijavljenog odvjetnika
+            List<Client> clients = clientService.getAllClients().stream()
+                    .filter(client -> client.getLawyer() != null && email.equals(client.getLawyer().getEmail()))
+                    .collect(Collectors.toList());
+            model.addAttribute("clients", clients);
+        }
+        return "client_pages/list-my-clients"; // Nova stranica za prikaz
+    }
 
 
 

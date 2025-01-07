@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" layout:decorate="~{layout/base}">
 <head>
-    <title>Popis sudskih predmeta</title>
+    <title>Popis arhiviranih sudskih predmeta</title>
 </head>
 <div th:fragment="content" class="table-container">
-    <h1>Popis sudskih predmeta</h1>
+    <h1>Popis arhiviranih sudskih predmeta</h1>
 
     <!-- Search Form -->
     <form th:action="@{/JuristiQ/litigation-cases}" method="get" class="search-form">
@@ -13,7 +13,7 @@
     </form>
 
     <!-- Add Button -->
-    <a th:href="@{/JuristiQ/litigation-cases/add}" class="btn-primary">Dodaj novi predmet</a>
+
 
     <!-- Table -->
     <table>
@@ -47,8 +47,10 @@
                 <a th:href="@{/JuristiQ/litigation-cases/edit/{id}(id=${case.id})}" class="btn btn-edit">Uredi</a>
 
                 <a th:href="@{/JuristiQ/litigation-cases/{id}/details(id=${case.id})}" class="btn btn-details">Detalji</a>
-                <a th:href="@{/JuristiQ/litigation-cases/{id}/archive(id=${case.id})}" class="btn btn-delete">Arhiviraj</a>
+                <a th:href="@{/JuristiQ/litigation-cases/{id}/unarchive(id=${case.id})}" class="btn btn-edit">Vrati iz arhive</a>
                 <a th:href="@{/JuristiQ/litigation-cases/delete/{id}(id=${case.id})}" class="btn btn-delete">Obriši</a>
+
+
             </td>
         </tr>
         </tbody>

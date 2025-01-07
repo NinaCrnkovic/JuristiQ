@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Registracijski kod</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<div class="code-container">
+    <h1>Registracija odvjetničkog ureda uspješna!</h1>
+    <p>Vaš registracijski kod:</p>
+    <h2 th:text="${registrationCode}" class="code-highlight"></h2>
+    <p>S ovim kodom odvjetnici mogu registrirati svoje korisničke račune.</p>
+    <a href="/JuristiQ/auth/register-lawyer" class="btn-primary">Registriraj odvjetnika</a>
+</div>
+</body>
+</html>

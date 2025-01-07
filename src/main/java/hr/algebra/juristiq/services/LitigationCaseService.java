@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -43,4 +44,33 @@ public class LitigationCaseService {
     public List<LitigationCase> getAllLitigationCases() {
         return litigationCaseRepository.findAll();
     }
+
+    public List<LitigationCase> getNonArchivedLitigationCases(String searchTerm) {
+        if (searchTerm == null || searchTerm.isEmpty()) {
+            return litigationCaseRepository.findByIsArchivedFalse();
+        } else {
+            return litigationCaseRepository.searchByKeywordAndIsArchivedFalse(searchTerm);
+        }
+    }
+
+    public List<LitigationCase> getArchivedLitigationCases() {
+        return litigationCaseRepository.findByIsArchivedTrue();
+    }
+
+    public void archiveCase(Long id, boolean archive) {
+        LitigationCase litigationCase = litigationCaseRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Litigation case with ID " + id + " does not exist."));
+        litigationCase.setArchived(archive);
+        litigationCaseRepository.save(litigationCase);
+    }
+
+    public List<LitigationCase> getCasesByLawyerEmail(String email) {
+        return litigationCaseRepository.findAll().stream()
+                .filter(litigationCase -> litigationCase.getRepresentedParties().stream()
+                        .anyMatch(party -> party.getLawyer() != null && email.equals(party.getLawyer().getEmail())))
+                .collect(Collectors.toList());
+    }
+
+
+
 }

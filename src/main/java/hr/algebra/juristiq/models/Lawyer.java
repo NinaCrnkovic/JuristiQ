@@ -31,6 +31,8 @@ public class Lawyer {
     @ToString.Exclude
     private LawFirm lawFirm;
 
+    @OneToOne(mappedBy = "lawyer", cascade = CascadeType.ALL)
+    private User user;
 
 
 }

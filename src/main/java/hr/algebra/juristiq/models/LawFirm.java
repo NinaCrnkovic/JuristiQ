@@ -34,6 +34,10 @@ public class LawFirm {
     @ToString.Exclude
     private List<Lawyer> lawyers = new ArrayList<>();
 
+    @Column(unique = true, nullable = true)
+    private String registrationCode;
+
+
 
 
 }

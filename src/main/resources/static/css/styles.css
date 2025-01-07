@@ -787,3 +787,248 @@ h3 {
     padding-bottom: 5px;
     margin-bottom: 15px;
 }
+
+
+
+
+.content-area form {
+    max-width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.content-area form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.content-area form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.content-area form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.content-area form button:hover {
+    background-color: #45a049;
+}
+
+
+/* Welcome Page */
+.welcome-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.welcome-title {
+    color: #4C7A57; /* Green */
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.welcome-text {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.welcome-buttons .btn-primary {
+    display: inline-block;
+    margin: 0 10px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    text-decoration: none;
+    text-align: center;
+    color: #fff;
+    background-color: #4C7A57; /* Green */
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.welcome-buttons .btn-primary:hover {
+    background-color: #bfa34b; /* Gold */
+}
+.registration-note {
+    font-size: 0.9rem;
+    color: #D32F2F; /* Tamno crvena */
+    margin-top: 10px;
+}
+
+
+.form-container {
+    width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.form-container h1 {
+    color: #4C7A57; /* Green */
+    margin-bottom: 20px;
+}
+
+.form-container label {
+    display: block;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.form-container input {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.form-container button {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #4C7A57; /* Green */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.form-container button:hover {
+    background-color: #bfa34b; /* Gold */
+}
+
+
+/* Dodatni stilovi za registracijske stranice */
+.form-container {
+    width: 500px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.form-container h1 {
+    color: #4C7A57; /* Zelena boja */
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.form-container label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.form-container input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.form-container button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4C7A57; /* Zelena boja */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.form-container button:hover {
+    background-color: #bfa34b; /* Zlatna boja */
+}
+
+.code-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.code-container h2.code-highlight {
+    color: #4C7A57; /* Green */
+    font-size: 2rem;
+    margin: 20px 0;
+    font-weight: bold;
+}
+
+/* Welcome Page */
+.welcome-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.welcome-title {
+    color: #4C7A57; /* Green */
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.welcome-text {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.welcome-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px; /* Adds space between buttons */
+}
+
+.welcome-buttons .btn-primary {
+    display: inline-block;
+    padding: 12px 25px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #4C7A57; /* Green */
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.welcome-buttons .btn-primary:hover {
+    background-color: #bfa34b; /* Gold */
+}

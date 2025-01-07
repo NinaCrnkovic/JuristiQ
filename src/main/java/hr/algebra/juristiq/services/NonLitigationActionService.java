@@ -41,5 +41,7 @@ public class NonLitigationActionService {
     public List<NonLitigationAction> getAllActions() {
         return actionRepository.findAll();
     }
+
+
 }
 
